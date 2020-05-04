@@ -1,0 +1,56 @@
+Set keymap:
+  localectl list-keymaps
+  loadkeys es
+
+Set Network:
+  ip link (shows adapters)
+  ip link set wlan0 up
+  dhcpcd (to obtain ip address)
+  ping archlinux.com
+  systemctl status iwd / systemd-networkd / systemd-resolved
+  iwctl
+  /etc/systemd/network/25-wireless.network [Match] Name=wlan0 [Network] DHCP=ipv4
+  networkctl reload
+  
+Set clock:
+  datetimectl set-ntp true 
+  datetimectl set-timezone Europe/Madrid
+  datetimectl status
+
+Format disk:
+  lsblk or fdisk -l (show disks)
+  fdisk /dev/sda (partition, minimun efi+linux root)
+  lsblk -f
+  mkfs.ext4 -L label linux-root
+  mkfs.fat -F32 efi
+  mount linux-root /mnt
+  mkdir mnt/efi
+  mount efi /mnt/efi
+
+Configure system
+  pacstrap /mnt base linux linux-firmware (iwd vim)
+  genfstab -U /mnt >> /mnt/etc/fstab
+
+GRUB
+  pacman -S grub efibootmgr intel-ucode
+  grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=GRUB
+  grub-mkconfig -o /boot/grub/grub.cfg
+  efibootmgr -v
+
+User
+  useradd -m vicente (creates home folder)
+  pacman -S sudo
+  sudo -lU vicente
+  EDITOR=vim visudo (Uncomment wheel group)
+  usermod -aG wheel vicente
+
+Graphic interface
+  pacman -S xf86-video-intel xorg-server xorg-init
+  pacman -S i3 ttf-dejavu dmenu termite
+  cp /etc/X11/xinit/xinitrc ~/.xinitrc (add exec /usr/bin/i3)
+  setxkbmap es
+
+
+
+
+

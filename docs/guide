@@ -1,0 +1,40 @@
+
+Pacman:
+  -S -Ss -Syu -Si -Sii
+  -Qs -Qi -Ql (list files) -Qo (return the package that owns the file) 
+  -Qe (explicit) -Qd (dependencies) -Qdt (unrequired dependencies)
+  -R -Rs (remove dependecies) -Rc (recursive upwards)
+
+Grep:
+  -e (patterns) -f (file with patterns)
+  -E (extended regexp) -F (fixed string)
+  -i (ignore case) -v (invert match)
+  -c (show number lines matching)
+  -l (shows files containing pattern) -L (not containing)
+  -n (show line number)
+  -A -B -C (context after, before, both)  
+  -I (ignore binary files)
+  -r (search recursive in directories)
+  --exclude-dir= (exclude directories)
+  -o (only matching) -m (max number)
+  sort -u (sort and removes duplicates)
+  wc -l (return number of lines)
+
+Extended regular expression:
+  . (any character)
+  [] (any in, range with -, not in with ^) [a-dh] evaluates to a,b,c,d,h
+  * + ? {n} {n,} {,m} {n,m} (repetition)
+  | (concatenation, logic or)
+  ^ (beginning of line) $ (end of line)
+  \< (beginning) \> (end) \b (edge) \B (not edge)
+  Basic regular expression \? \+ \{ \| \( \)
+
+ANSI escape codes:
+  Intro <Esc>[ -> \033[
+  Move cursor UDRL NL PL {n}[ABCDEF],  position {row};{col}H 
+  Clear 2J Erase 3J Erase line 2K Scroll Up/Down nS/T
+  Color: 256 fg 38;5:{n}m bg 48;5;{n}m options:
+    reset bold dim italic underline [01234]m, 8fg30-37m 8bg40-47m
+
+
+Connection setup: systemd-networkd + systemd-resolved + iwd (wifi)

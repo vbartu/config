@@ -1,31 +1,59 @@
-" Plugins
-" - NerdTree
-" - Fugitive
-" - GitGutter
 
+"tags, registers, marks, record
+set encoding=utf-8
+set mouse=a
+
+" Colors
 syntax on
-set t_Co=16
+"set termguicolors
+colorscheme torte
+
+" Buffers
+set hidden
+nmap gb :ls<CR>:b<Space>
+
+" Status line
+highlight StatusModeColor ctermfg=15 ctermbg=231 cterm=Bold
+autocmd WinLeave * highlight StatusModeColor ctermfg=15 ctermbg=239 cterm=Bold
+
+function! StatusMode()
+	let mode = mode()
+	if mode == "n"
+		highlight StatusModeColor ctermbg=28
+		return " NORMAL "
+	elseif mode == "i"
+		highlight StatusModeColor ctermbg=100
+		return " INSERT "
+	elseif mode == "v"
+		highlight StatusModeColor ctermbg=99
+		return " VISUAL "
+	else
+		return ""
+	endif
+endfunction
+highlight StatusLine ctermfg=39 ctermbg=236 cterm=Bold
+highlight StatusLineNC ctermfg=241 ctermbg=236 cterm=Bold
+set laststatus=2
+set statusline=
+set statusline+=\ %#StatusModeColor#
+set statusline+=%{StatusMode()}
+set statusline+=%##
+set statusline+=\ %f%m%=
+set statusline+=%{v:register}
+set statusline+=\ %y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ %3p%%\ %4l:%-3c
 
 " Number and cursorline
 set number
 set cursorline
-highlight LineNr cterm=None ctermfg=grey ctermbg=None 
-highlight CursorLine cterm=None ctermfg=None ctermbg=darkgrey
-highlight CursorLineNr cterm=bold ctermfg=Yellow ctermbg=None 
-
-" NerdTree toggle
-nmap ,k :NERDTreeToggle<CR>
-
-" GitGutter update time
-set updatetime=100
+highlight LineNr ctermfg=grey ctermbg=None cterm=None
+highlight CursorLine ctermfg=None ctermbg=236 cterm=None
+highlight CursorLineNr ctermfg=Yellow ctermbg=None cterm=None
 
 " Remap Esc
 imap kj <Esc>
 imap jk <Esc>
-
-" Scroll 3 lines at a time
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
 
 " Splits and navigation
 set splitright
@@ -38,22 +66,22 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
 
 " Set 80 char limit
-set colorcolumn=81
-highlight ColorColumn ctermbg=darkgrey
+nmap <silent> <F2> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
+highlight ColorColumn ctermfg=red ctermbg=238 cterm=None
 
-" Tabs and whitespaces
-set listchars=space:_,eol:$,tab:>-,trail:~,extends:>,precedes:<
+" Show whitespaces
+highlight NonText ctermfg=239 ctermbg=None cterm=None
+highlight SpecialKey ctermfg=239 ctermbg=None cterm=None
+set listchars=space:·,eol:¬,tab:▸\ ,trail:~,precedes:«,extends:»
+set list
+nmap <silent> <F3> :set list!<CR>
+set list
+
+"Tab config
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
 set softtabstop=4
 autocmd Filetype python setlocal expandtab
-
-
-
