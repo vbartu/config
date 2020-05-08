@@ -1,12 +1,25 @@
 
-"tags, registers, marks, record
+" TODO: tags, registers, marks, record
+" :h index :map
 set encoding=utf-8
 set mouse=a
 
-" Colors
+" Theme and colors
 syntax on
-"set termguicolors
-colorscheme torte
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+colorscheme onehalfdark
+highlight Normal guibg=#121212
+highlight LineNr guibg=#121212
+
+" Folding
+nmap <silent> <F4> :execute "set foldcolumn=" . (&foldcolumn == "0" ? "4" : "0")<CR>
+set nofoldenable
+set foldmethod=indent
+
 
 " Buffers
 set hidden
@@ -22,7 +35,7 @@ function! StatusMode()
 		highlight StatusModeColor ctermbg=28
 		return " NORMAL "
 	elseif mode == "i"
-		highlight StatusModeColor ctermbg=100
+
 		return " INSERT "
 	elseif mode == "v"
 		highlight StatusModeColor ctermbg=99
@@ -66,6 +79,10 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 " Set 80 char limit
 nmap <silent> <F2> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
@@ -75,13 +92,17 @@ highlight ColorColumn ctermfg=red ctermbg=238 cterm=None
 highlight NonText ctermfg=239 ctermbg=None cterm=None
 highlight SpecialKey ctermfg=239 ctermbg=None cterm=None
 set listchars=space:·,eol:¬,tab:▸\ ,trail:~,precedes:«,extends:»
-set list
 nmap <silent> <F3> :set list!<CR>
-set list
 
-"Tab config
+" Tab config
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
 set softtabstop=4
 autocmd Filetype python setlocal expandtab
+set autoindent
+inoremap <S-Tab> <C-d>
+
+" Python docstring plugin
+command! -nargs=0 -range=0 -complete=customlist,pydocstring#insert Pydocstring call pydocstring#insert(<q-args>, <count>, <line1>, <line2>)
+command! -nargs=0 -complete=customlist,pydocstring#format PydocstringFormat call pydocstring#format()
