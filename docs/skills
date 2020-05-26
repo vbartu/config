@@ -13,6 +13,8 @@ Embedded
   c
   gdb
   JTAG
+  make
+  ctags
 
 Linux
   kernel

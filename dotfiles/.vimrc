@@ -6,6 +6,7 @@ set mouse=a
 
 " Theme and colors
 syntax on
+set hlsearch
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -106,3 +107,6 @@ inoremap <S-Tab> <C-d>
 " Python docstring plugin
 command! -nargs=0 -range=0 -complete=customlist,pydocstring#insert Pydocstring call pydocstring#insert(<q-args>, <count>, <line1>, <line2>)
 command! -nargs=0 -complete=customlist,pydocstring#format PydocstringFormat call pydocstring#format()
+
+" FZF plugin
+nmap gy :FZF<CR>
