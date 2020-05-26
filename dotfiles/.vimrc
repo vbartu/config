@@ -3,6 +3,7 @@
 " :h index :map
 set encoding=utf-8
 set mouse=a
+command Reload source ~/.vimrc
 
 " Theme and colors
 syntax on
@@ -13,14 +14,17 @@ if exists('+termguicolors')
   set termguicolors
 endif
 colorscheme onehalfdark
-highlight Normal guibg=#121212
-highlight LineNr guibg=#121212
+highlight Normal guibg=#111111
+highlight LineNr guibg=#000000
 
 " Folding
 nmap <silent> <F4> :execute "set foldcolumn=" . (&foldcolumn == "0" ? "4" : "0")<CR>
 set nofoldenable
 set foldmethod=indent
 
+" Fast scrolling
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
 
 " Buffers
 set hidden
@@ -90,8 +94,8 @@ nmap <silent> <F2> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : ""
 highlight ColorColumn ctermfg=red ctermbg=238 cterm=None
 
 " Show whitespaces
-highlight NonText ctermfg=239 ctermbg=None cterm=None
-highlight SpecialKey ctermfg=239 ctermbg=None cterm=None
+highlight NonText ctermfg=239 ctermbg=NONE cterm=NONE guifg=#852929 guibg=NONE guisp=NONE
+highlight SpecialKey ctermfg=239 ctermbg=NONE cterm=NONE guifg=#852929 guibg=NONE gui=NONE
 set listchars=space:·,eol:¬,tab:▸\ ,trail:~,precedes:«,extends:»
 nmap <silent> <F3> :set list!<CR>
 

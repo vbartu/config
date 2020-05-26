@@ -37,7 +37,8 @@ export HISTCONTROL='erasedups:ignoreboth'
 export HISTIGNORE=?:??
 export PROMPT_COMMAND='history -a'
 
-# Git editor
+# Some config
+export LESSHISTFILE=-
 export EDITOR=vim
 
 # Prompt
