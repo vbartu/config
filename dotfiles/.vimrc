@@ -14,7 +14,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 colorscheme onehalfdark
-highlight Normal guibg=#111111
+highlight Normal guibg=#000000 "guifg=#FFFFFF
 highlight LineNr guibg=#000000
 
 " Folding
@@ -40,7 +40,7 @@ function! StatusMode()
 		highlight StatusModeColor ctermbg=28
 		return " NORMAL "
 	elseif mode == "i"
-
+		highlight StatusModeColor ctermbg=148
 		return " INSERT "
 	elseif mode == "v"
 		highlight StatusModeColor ctermbg=99
@@ -70,7 +70,6 @@ highlight CursorLine ctermfg=None ctermbg=236 cterm=None
 highlight CursorLineNr ctermfg=Yellow ctermbg=None cterm=None
 
 " Remap Esc
-imap kj <Esc>
 imap jk <Esc>
 
 " Splits and navigation
@@ -94,8 +93,8 @@ nmap <silent> <F2> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : ""
 highlight ColorColumn ctermfg=red ctermbg=238 cterm=None
 
 " Show whitespaces
-highlight NonText ctermfg=239 ctermbg=NONE cterm=NONE guifg=#852929 guibg=NONE guisp=NONE
-highlight SpecialKey ctermfg=239 ctermbg=NONE cterm=NONE guifg=#852929 guibg=NONE gui=NONE
+highlight NonText ctermfg=239 ctermbg=NONE cterm=NONE guifg=#2b2b2b guibg=NONE guisp=NONE
+highlight SpecialKey ctermfg=239 ctermbg=NONE cterm=NONE guifg=#2b2b2b guibg=NONE gui=NONE
 set listchars=space:·,eol:¬,tab:▸\ ,trail:~,precedes:«,extends:»
 nmap <silent> <F3> :set list!<CR>
 
@@ -114,3 +113,6 @@ command! -nargs=0 -complete=customlist,pydocstring#format PydocstringFormat call
 
 " FZF plugin
 nmap gy :FZF<CR>
+
+" Signify plugin
+set updatetime=100
