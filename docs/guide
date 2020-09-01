@@ -20,14 +20,31 @@ Grep:
   sort -u (sort and removes duplicates)
   wc -l (return number of lines)
 
-Extended regular expression:
-  . (any character)
-  [] (any in, range with -, not in with ^) [a-dh] evaluates to a,b,c,d,h
-  * + ? {n} {n,} {,m} {n,m} (repetition)
-  | (concatenation, logic or)
-  ^ (beginning of line) $ (end of line)
-  \< (beginning) \> (end) \b (edge) \B (not edge)
-  Basic regular expression \? \+ \{ \| \( \)
+Regular expressions:
+  \. match a fullstop
+  . match any character (just one)
+  [abc] any character inside the brackets
+  [^abc] exclude char inside the brackets
+  \d [0-9], \w [A-Za-z0-9_], \W [^A-Za-z0-9_]
+  a{m} match exactly m repetitions [abc]{3}
+  {n,m} match between n and m repetitions
+  * {0,inf}, + {1,inf}, ? {0,1}
+  \t tab, \n new line, \r carriage return
+  \s [ \t\n\r], \S [^ \t\n\r]
+  ^ start of line, $ end of line
+  \b boundary between word and non word character
+  (.*) capture groups for further processing
+  (a(b)) nested groups, numbered left to right
+  (abc)? checks existence of a group of characters
+  (abc|def) conditional selection of a group
+  \0 reference to full matched text
+  \1 reference to first capture group
+  Basic RegExp: +,?,{},(),| needs to be escaped (\)
+
+Byte communication:
+  od: -A[x|n] (address) -t[x1c|x4] (output format)
+    -w32 (Bytes per line)
+  echo -n (no \n) -e (escape) "\x00\xff"
 
 ANSI escape codes:
   Intro <Esc>[ -> \033[
