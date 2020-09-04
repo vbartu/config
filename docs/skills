@@ -6,6 +6,8 @@ Basic
   simple-terminal
   git
   bash
+  rsync
+  sed
 
 Embedded
   gcc

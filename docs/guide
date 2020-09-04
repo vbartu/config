@@ -42,8 +42,10 @@ Regular expressions:
   Basic RegExp: +,?,{},(),| needs to be escaped (\)
 
 Byte communication:
+  sudo stty -F /dev/ttyACM0 115200 raw -clocal -crtscts
+  cat /dev/ttyACM0 | od
   od: -A[x|n] (address) -t[x1c|x4] (output format)
-    -w32 (Bytes per line)
+    -w32 (Bytes per line, needed to print) -v (repeated lines)
   echo -n (no \n) -e (escape) "\x00\xff"
 
 ANSI escape codes:

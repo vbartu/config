@@ -19,6 +19,7 @@ alias la='ls -alh --color=auto'
 alias ..='cd ..'
 alias grep='grep --color=auto'
 alias guide='cat ~/devel/config/docs/guide'
+alias make='make -j'
 
 # JLink alias
 alias jl='JLinkExe -if SWD -speed 4000 -device NRF52832_XXAA -autoconnect 1'
