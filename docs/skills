@@ -8,14 +8,15 @@ Basic
   bash
   rsync
   sed
+  ed
 
 Embedded
   gcc
   make
+  linker
   c
   gdb
   JTAG
-  make
   ctags
 
 Linux

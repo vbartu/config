@@ -48,6 +48,11 @@ Byte communication:
     -w32 (Bytes per line, needed to print) -v (repeated lines)
   echo -n (no \n) -e (escape) "\x00\xff"
 
+Mount .img:
+  fdisk -lu file.img
+  get offset_in_bytes = sector_offset*sector_size
+  sudo mount -o loop,offset=$((512*sec_off)) file.img /mnt
+
 ANSI escape codes:
   Intro <Esc>[ -> \033[
   Move cursor UDRL NL PL {n}[ABCDEF],  position {row};{col}H 
