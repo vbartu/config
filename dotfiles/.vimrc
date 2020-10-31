@@ -89,7 +89,7 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 " Set 80 char limit
-nmap <silent> <F2> :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
+nmap <silent> <F2> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
 highlight ColorColumn ctermfg=red ctermbg=238 cterm=None
 
 " Show whitespaces

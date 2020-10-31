@@ -1,9 +1,69 @@
+SSH:
+	default identity for ssh: ~/.ssh/id_rsa | id_rsa.pub
+	ssh-keygen -t ecdsa -b 521 -f filename
+	.shh/config host something
+		HostName (ip/url), Port, User, IdenityFile (~/.ssh/...)
+
+Linux processes:
+	New terminal -> new session -> first job -> only one process (bash)
+		commands: processes of the existing job
+		subshell: new job, its commands in its job
+	controlling terminal (session): original shell stdin and stdout
+	only one job in a session is in the foreground
+		can read/write the controlling terminal
+		jobs background gets SIGTTIN when attempt a reading
+
+Ip:
+	ip addr
+		add 192.168.0.100/24 broadcast + dev wlan0 
+			'+' to infer broadcast address (last address)
+		del 192.168.0.100/24 dev wlan0
+		flush 192.168.0.100/24 dev wlan0 (deletes all addrs)
+	ip route
+		ip route add/del PREFIX via address dev wlan0
+			PREFIX: either default or CIDR (x.y.z.a/msk)
+			address: address or CIDR
+
+DNS:
+	/etc/resolv.conf
+		nameserver 8.8.8.8
+		nameserver 8.8.4.4
+
+Users and groups:
+	/etc/passwd
+		[user:password:uid:gid:comments:home:shell]
+	/etc/group
+		[group:password:gid:users]
+	/etc/shadow
+		[user:$id$salt$hashed:lastchanged:min:max:warn:inactive:expire]
+	/etc/gshadow
+		[group:$id$salt$hashed:admin-users:users]
+	useradd, userdel, usermod, passwd, chpasswd, lastlog
+	groupadd, groupdel, groupmems, groupmod, groups, gpasswd, chgpasswd
+
+Bash:
+	<, >, |, &&, ||, ;, &(to subshell, bg)
+	source file_with_commands
+	* any chars, ? any single char
+	variable1=home (string) -> $variable1, ${variable1}
+	export variable1 (changing it changes the export)
+	really/long/path/{file1,file2}.c
+	$? last executed command return value
+	functions: foo(){....} (arguments $1, $2, ...), return n
+	command substitution: $(string-command)
+	arithmetic substitution: $(((3+5)*2)) variables are okey
+	subshell: (commands) -> does not affect original shell
+	Ctrl Z moves job to bg with SIGTSTP, and a shell job to fg
+		jobs, bg N (sends SIGCONT to bg job), fg N (+ job to fg)
 
 Pacman:
   -S -Ss -Syu -Si -Sii
   -Qs -Qi -Ql (list files) -Qo (return the package that owns the file) 
   -Qe (explicit) -Qd (dependencies) -Qdt (unrequired dependencies)
   -R -Rs (remove dependecies) -Rc (recursive upwards)
+
+Journal:
+	-t target(app), -b n (n reboot)
 
 Grep:
   -e (patterns) -f (file with patterns)
@@ -52,6 +112,9 @@ Mount .img:
   fdisk -lu file.img
   get offset_in_bytes = sector_offset*sector_size
   sudo mount -o loop,offset=$((512*sec_off)) file.img /mnt
+
+Open Markdown:
+	grip -b file (uses python)
 
 ANSI escape codes:
   Intro <Esc>[ -> \033[

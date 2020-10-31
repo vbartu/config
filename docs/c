@@ -1,0 +1,43 @@
+Memory layout:
+	text: code
+	data:
+		initialized global/static data
+		 - readonly (rodata) -> const type qualifier
+		 - read/write
+	bss (block started by symbol):
+		unintilized global/static data
+		initialized by kernel to 0
+	heap:
+		grows upwards
+		dynamic memory allocation (malloc, realloc, calloc, free)
+		shared by libraries and dynamically loaded modules
+	stack:
+		grows downwards -> stack pointer
+		used for save context in function calls/jumps (LIFO structure)
+		stores return addres, and function local variables
+
+Storage classes (block == {}):
+	auto: Automatic storage (stack). Scope and lifetime limited to block.
+		Default value inside blocks, so it's redundant.
+	register: Autmatic storage (cpu register or stack). Scope and lifetime
+		limited to block. Used for rapid access (f.e. counters). Can't use &.
+	static: static storage (data/bss). For variables inside blocks, the scope
+		is that block, while for global variables, it's the compilation unit
+		(prevents extern). The lifetime is the entire program.
+	"global": Not a storage class. Variables defined at file level (outside any
+		block) are global variables, and have static storage. Can be accessed
+		from anywhere using extern.
+	extern: Indicates that a variable is defined elsewhere (outside block or
+		compilation unit). Functions protypes have this class by default.
+
+Type qualifiers:
+	const: The value doesn't change after initialization. If variable has
+		static storage, can be stored in read-only memory (flash).
+	volatile: For optimizing compilers. The value can may change even if not
+		modified explicitly (f.e. I/O).
+	restrict: For pointers. Tells the compiler only this pointer can acces the
+		object to which it points.
+	_Atomic
+	
+		
+	
