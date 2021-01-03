@@ -13,18 +13,26 @@
 [[ -r /usr/share/fzf/completion.bash ]] && . /usr/share/fzf/completion.bash
 
 # Alias
-alias ls='ls --color=auto'
-alias ll='ls -lh --color=auto'
-alias la='ls -alh --color=auto'
+alias ls='ls --color=auto --group-directories-first'
+alias ll='ls -lh --color=auto --group-directories-first'
+alias la='ls -Alhv --color=auto --group-directories-first'
 alias ..='cd ..'
 alias cl='clear -x'
 alias grep='grep --color=auto'
 alias guide='cat ~/devel/config/docs/guide'
 alias make='make -j'
+alias rm="echo"
+
+# Functions
+rr() {
+	if [ $# -ne 0 ]; then
+		mv $* $HOME/.trash
+	fi
+}
 
 # JLink alias
-alias jl='JLinkExe -if SWD -speed 4000 -device NRF52832_XXAA -autoconnect 1'
-alias jls='JLinkExe -if SWD -speed 4000 -device NRF52832_XXAA -autoconnect 1 -SelectEmuBySN'
+alias jl='JLinkExe -if SWD -speed 4000 -device NRF52840_XXAA -autoconnect 1'
+alias jls='JLinkExe -if SWD -speed 4000 -device NRF52840_XXAA -autoconnect 1 -SelectEmuBySN'
 alias jlc='JLinkRTTClient'
 
 # PATH
@@ -41,7 +49,6 @@ export PROMPT_COMMAND='history -a'
 
 # Some config
 export LESSHISTFILE=-
-export EDITOR=vim
+export EDITOR=nvim
 
-# Prompt
-PS1="\[\e[32m\][\[\e[m\]\[\e[1;32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]\[\e[32m\] \[\e[m\]\[\e[33m\]\W\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32m\]\\$\[\e[m\]\[\e[32m\] \[\e[m\]"
+PS1="\033[36m[\033[1m\u\033[m\033[36m@\h \033[33m\W\033[36m]$ \033[m"

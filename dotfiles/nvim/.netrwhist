@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/mnt/data/devel/dart-vim-plugin/autoload'
+let g:netrw_dirhist_8='/home/vicente/devel'
+let g:netrw_dirhist_7='/mnt/data/work/projects/gw-firmware/include'
+let g:netrw_dirhist_6='/mnt/data/work/projects/sdk/nrf5_SDK_for_Mesh_v4.2.0/mesh/serial/src'
+let g:netrw_dirhist_5='/mnt/data/work/projects/sdk/nRF5_SDK_17.0.2_d674dde/examples/crypto/nrf_crypto/hash/pca10056'
+let g:netrw_dirhist_4='/mnt/data/work/projects/sdk/nRF5_SDK_17.0.2_d674dde/components/libraries/crypto/backend/micro_ecc'
+let g:netrw_dirhist_3='/mnt/data/work/projects/ota-imp/src'
+let g:netrw_dirhist_2='/mnt/data/devel/snake'
+let g:netrw_dirhist_1='/mnt/data/devel/config/scripts'

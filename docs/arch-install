@@ -33,12 +33,13 @@ Configure system
 
 Boot
   pacman -S grub efibootmgr intel-ucode os-prober
-  grub-install --target=x86_64-efi --efi-directory=esp --bootloader-id=GRUB
+  grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
   grub-mkconfig -o /boot/grub/grub.cfg
   efibootmgr -v
 
 User
   useradd -m vicente (creates home folder)
+  passwd vicente
   pacman -S sudo
   sudo -lU vicente
   EDITOR=vim visudo (Uncomment wheel group)
