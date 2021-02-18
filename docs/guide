@@ -42,7 +42,14 @@ Users and groups:
 	groupadd, groupdel, groupmems, groupmod, groups, gpasswd, chgpasswd
 
 Bash:
+	Redirection:
+		stdin  (0): <, <<END {lines} END (here docs), <<< (here strings)
+		stdout (1): > (overwrites), >> (appends)
+		stderr (2): 2>, 2>&1 (copies out fd), &> (out and err)
+		other  (n): [n]<, [n]>, [n]>>
 	<, >, |, &&, ||, ;, &(to subshell, bg)
+	if [[ ... ]] then ... fi
+	while [[ ... ]] do ... done
 	source file_with_commands
 	* any chars, ? any single char
 	variable1=home (string) -> $variable1, ${variable1}

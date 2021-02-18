@@ -88,8 +88,7 @@ set tabstop=4
 set shiftwidth=4
 set noexpandtab
 set softtabstop=4
-autocmd Filetype python setlocal expandtab
-set autoindent
+"set autoindent
 inoremap <S-Tab> <C-d>
 
 " Python docstring plugin
@@ -101,6 +100,9 @@ nmap gy :FZF<CR>
 
 " Signify plugin
 set updatetime=100
+
+" Python files
+autocmd Filetype python setlocal expandtab
 
 " Dart files
 runtime dart/ftdetect/dart.vim

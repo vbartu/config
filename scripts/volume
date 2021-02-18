@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+UNIQUE_ID=257947
+
+actual=$(pactl list sinks | grep -o "\w\+%" | head -1 | grep -o "\w\+")
+
+
+if [[ $1 == "-i" ]]; then
+	new=$((actual + $2))
+	if [[ $new -ge 100 ]]; then
+		new=100
+	fi
+	pactl set-sink-volume @DEFAULT_SINK@ $new%
+	dunstify "Volume: $new%" -r $UNIQUE_ID
+
+elif [[ $1 == "-d" ]]; then
+	new=$((actual - $2))
+	if [[ $new -le 0 ]]; then
+		new=0
+	fi
+	pactl set-sink-volume @DEFAULT_SINK@ $new%
+	dunstify "Volume: $new%" -r $UNIQUE_ID
+fi

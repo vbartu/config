@@ -46,12 +46,13 @@ User
   usermod -aG wheel vicente
 
 Graphic interface
-  pacman -S xf86-video-intel xorg-server xorg-xinit
+  pacman -S xf86-video-intel xorg-server xorg-xinit xorg-xinput xorg-xbacklight
   pacman -S i3 ttf-dejavu dmenu termite
   cp /etc/X11/xinit/xinitrc ~/.xinitrc (add exec /usr/bin/i3)
   setxkbmap es
 
-
+Firefox
+  about:config -> ui.systemUsesDarkTheme 2
 
 
 

@@ -19,16 +19,8 @@ alias la='ls -Alhv --color=auto --group-directories-first'
 alias ..='cd ..'
 alias cl='clear -x'
 alias grep='grep --color=auto'
-alias guide='cat ~/devel/config/docs/guide'
-alias make='make -j'
-alias rm="echo"
-
-# Functions
-rr() {
-	if [ $# -ne 0 ]; then
-		mv $* $HOME/.trash
-	fi
-}
+alias guide='cat ~/devel/config/docs/guide | less'
+alias make='make -j 12'
 
 # JLink alias
 alias jl='JLinkExe -if SWD -speed 4000 -device NRF52840_XXAA -autoconnect 1'
@@ -44,11 +36,11 @@ export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export HISTCONTROL=erasedups
 export HISTCONTROL='erasedups:ignoreboth'
-export HISTIGNORE=?:??
+export HISTIGNORE=?
 export PROMPT_COMMAND='history -a'
 
 # Some config
 export LESSHISTFILE=-
 export EDITOR=nvim
 
-PS1="\033[36m[\033[1m\u\033[m\033[36m@\h \033[33m\W\033[36m]$ \033[m"
+export PS1="\[\e[36m\][\[\e[m\]\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[33m\]\W\[\e[m\]\[\e[36m\]]\[\e[m\]\[\e[36m\]\\$\[\e[m\] "
