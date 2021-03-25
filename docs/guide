@@ -13,6 +13,18 @@ Linux processes:
 		can read/write the controlling terminal
 		jobs background gets SIGTTIN when attempt a reading
 
+Iptables:
+  tables (filter, nat, mangle, raw, security)
+      -t table, -L (list) -> rules executed top to bottom
+  chains (PREROUTING, INPUT, FORWARD, OUTPUT, POSTROUTING)
+      -A (append), -I (insert), -D (delete), -C (check)
+  rules: iptables -A INPUT -s 192.168.1.55 -j DROP
+      -s (source IP/CIDR), -d (destination), -p (protocol name/number)
+	  -i, (in interface) -o (out interface)
+  target (ACCEPT, DROP, MASQUERADE)
+      -j (jump) target, -P (policy) target
+
+
 Ip:
 	ip addr
 		add 192.168.0.100/24 broadcast + dev wlan0 
