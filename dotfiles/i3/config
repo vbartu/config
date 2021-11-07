@@ -7,7 +7,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# colors                  border   bg       text     indicator  child_border
+# Colors                  border   bg       text     indicator  child_border
 client.focused            #9c7114  #9c7114  #ffff33  $coloratt  #9c7114
 client.focused_inactive   #333333  #000000  #ffff33  $coloratt  #000000
 client.unfocused          #333333  #000000  #888888  $coloratt  #000000
@@ -21,21 +21,27 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessUp exec devel/config/scripts/backlight -i 10
 bindsym XF86MonBrightnessDown exec devel/config/scripts/backlight -d 10
+bindsym Print exec gnome-screenshot -i
+bindsym $mod+Print exec gnome-screenshot -a
 
 # Applications
-bindsym $mod+Return exec st
+bindsym $mod+Return exec alacritty
 bindsym $mod+c exec firefox
 bindsym $mod+t exec teams
 bindsym $mod+d exec dmenu_run
 bindsym $mod+z exec pavucontrol-qt
-bindsym $mod+Shift+q kill
+bindsym $mod+a exec qalculate-gtk
+bindsym $mod+u exec --no-startup-id alacritty --class float_shell
+bindsym $mod+i exec i3lock -ei .config/i3/drg.png
+bindsym $mod+q kill
+
 
 # Windows movement
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-bindsym $mod+a focus parent
+bindsym $mod+m focus parent
 
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -53,6 +59,8 @@ bindsym $mod+e layout toggle split
 # Floating windows
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
+for_window [class="Qalculate-gtk" instance="qalculate-gtk"] floating enable
+for_window [window_role="About"] floating enable
 
 # Workspaces
 set $ws1 "1"
@@ -107,5 +115,17 @@ bar {
         mode hide
 }
 
+# Notifications
+exec --no-startup-id dunst
+
+# Scratchpad terminal
+exec --no-startup-id alacritty --class float_shell
+for_window [instance="float_shell"] floating enable
+for_window [instance="float_shell"] move scratchpad
+bindsym $mod+x [instance="float_shell"] scratchpad show, move position 960 0, resize set 1200 800
+
+# Wallpaper
 #exec feh --bg-scale .config/i3/wallpaper.jpg --no-startup-id
-exec dunst --no-startup-id
+
+# i3lock log in
+exec --no-startup-id i3lock -ei .config/i3/drg.png
