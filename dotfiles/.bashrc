@@ -21,7 +21,13 @@ alias ..='cd ..'
 alias cl='clear -x'
 alias grep='grep --color=auto'
 alias guide='cat ~/devel/config/docs/guide | less'
-alias makej='make -j12'
+alias makej='make -j8'
+
+# Keybinds
+stty stop '' # Free ^S
+bind '"\023":"\022"'
+stty start '' # Free ^Q
+bind '"\021":"\ec"'
 
 # JLink alias
 alias jl='JLinkExe -if SWD -speed 4000 -device NRF52840_XXAA -autoconnect 1'
