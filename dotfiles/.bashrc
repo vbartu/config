@@ -56,5 +56,3 @@ eval `ssh-agent` &> /dev/null
 ssh-add ~/.ssh/id_ed25519 &> /dev/null
 
 export PS1="\[\e[36m\][\[\e[m\]\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[33m\]\W\[\e[m\]\[\e[36m\]]\[\e[m\]\[\e[36m\]\\$\[\e[m\] "
-
-export QSYS_ROOTDIR="/home/vicente/uni/drone_project/quartus/quartus_19.1.0/installation/quartus/sopc_builder/bin"

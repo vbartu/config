@@ -6,13 +6,14 @@ default_border pixel 1
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+y exec sudo systemctl restart iwd && dunstify "Wifi restarted"
 
 # Colors                  border   bg       text     indicator  child_border
-client.focused            #9c7114  #9c7114  #ffff33  $coloratt  #9c7114
+client.focused            #22ba45  #22ba45  #ffff33  $coloratt  #22ba45
 client.focused_inactive   #333333  #000000  #ffff33  $coloratt  #000000
 client.unfocused          #333333  #000000  #888888  $coloratt  #000000
 client.urgent             #2f343a  #900000  #ffffff  $coloratt  #900000
-client.placeholder        #9c7114  #000000  #ffffff  $coloratt  #0c0c0c
+client.placeholder        #22ba45  #000000  #ffffff  $coloratt  #0c0c0c
 
 # Functions keys
 bindsym XF86AudioRaiseVolume exec devel/config/scripts/volume -i 10
@@ -102,6 +103,12 @@ mode "resize" {
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
+
+		bindsym Left  move left
+		bindsym Down  move down
+		bindsym Up    move up
+		bindsym Right move right
+
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
