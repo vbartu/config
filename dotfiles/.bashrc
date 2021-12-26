@@ -22,6 +22,7 @@ alias cl='clear -x'
 alias grep='grep --color=auto'
 alias guide='cat ~/devel/config/docs/guide | less'
 alias makej='make -j8'
+alias duu='du -hd1 2>/dev/null | sort -hr'
 
 # Keybinds
 stty stop '' # Free ^S
