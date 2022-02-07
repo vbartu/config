@@ -4,9 +4,9 @@ if [[ $1 == "on" ]]; then
 	bluetoothctl power on > /dev/null
 	pactl info > /dev/null #This somehow loads BL module
 	bluetoothctl connect 54:71:DD:5A:88:93 > /dev/null
-	pactl set-card-profile 0 off
+	pactl set-card-profile 0 input:analog-stereo
 elif [[ $1 == "off" ]]; then
-	pactl set-card-profile 0 output:analog-stereo
+	pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
 	bluetoothctl disconnect 54:71:DD:5A:88:93 > /dev/null
 	bluetoothctl power off > /dev/null
 else

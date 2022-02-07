@@ -26,19 +26,21 @@ alias duu='du -hd1 2>/dev/null | sort -hr'
 
 # Keybinds
 stty stop '' # Free ^S
-bind '"\023":"\022"'
+bind '"\023":"\022"' # Bind to ^R
 stty start '' # Free ^Q
-bind '"\021":"\ec"'
+bind '"\021":"\ec"' # Bind to Alt+C
 
 # JLink alias
 alias jl='JLinkExe -if SWD -speed 4000 -device NRF52840_XXAA -autoconnect 1'
 alias jls='JLinkExe -if SWD -speed 4000 -device NRF52840_XXAA -autoconnect 1 -SelectEmuBySN'
 alias jlc='JLinkRTTClient'
+alias jl91='JLinkExe -if SWD -speed 4000 -device NRF9160_XXAA -autoconnect 1'
 
 # PATH
 export PATH=~/.local/bin:~/devel/config/scripts:$PATH
 export PATH=/home/vicente/uni/drone_project/t-crest/local/bin:$PATH
 export PATH=/home/vicente/uni/drone_project/quartus/quartus_19.1.0/installation/quartus/bin:$PATH
+
 # History tweaks
 shopt -s histappend
 export HISTFILESIZE=1000000
@@ -48,7 +50,7 @@ export HISTCONTROL='erasedups:ignoreboth'
 export HISTIGNORE=?
 export PROMPT_COMMAND='history -a'
 
-# Some config
+# Misc
 export LESSHISTFILE=-
 export EDITOR=nvim
 
