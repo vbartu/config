@@ -11,8 +11,6 @@
 [[ -r /usr/share/fzf/key-bindings.bash ]] && . /usr/share/fzf/key-bindings.bash
 [[ -r /usr/share/fzf/completion.bash ]] && . /usr/share/fzf/completion.bash
 
-
-
 # Alias
 alias ls='ls --color=auto --group-directories-first'
 alias ll='ls -lh --color=auto --group-directories-first'
@@ -30,16 +28,25 @@ bind '"\023":"\022"' # Bind to ^R
 stty start '' # Free ^Q
 bind '"\021":"\ec"' # Bind to Alt+C
 
-# JLink alias
+# JLink
 alias jl='JLinkExe -if SWD -speed 4000 -device NRF52840_XXAA -autoconnect 1'
 alias jls='JLinkExe -if SWD -speed 4000 -device NRF52840_XXAA -autoconnect 1 -SelectEmuBySN'
 alias jlc='JLinkRTTClient'
 alias jl91='JLinkExe -if SWD -speed 4000 -device NRF9160_XXAA -autoconnect 1'
+export JLINK_TARGET=682486629
+
+# NRF Connect SDK
+export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb
+export GNUARMEMB_TOOLCHAIN_PATH="/opt/gcc-arm-none-eabi-9-2019-q4-major"
+
+# Flutter
+export PATH=~/work/android/flutter/bin:$PATH
+export PATH=~/work/android/cmdline-tools/latest/bin:$PATH
+export ANDROID_SDK_ROOT=~/work/android
+export CHROME_EXECUTABLE=/opt/google/chrome/chrome
 
 # PATH
 export PATH=~/.local/bin:~/devel/config/scripts:$PATH
-export PATH=/home/vicente/uni/drone_project/t-crest/local/bin:$PATH
-export PATH=/home/vicente/uni/drone_project/quartus/quartus_19.1.0/installation/quartus/bin:$PATH
 
 # History tweaks
 shopt -s histappend

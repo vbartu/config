@@ -141,6 +141,12 @@ augroup filetype_python
 	autocmd Filetype python setlocal expandtab
 augroup END
 
+" Java files
+augroup filetype_java
+	autocmd!
+	autocmd Filetype java setlocal expandtab
+augroup END
+
 " Dart files
 runtime dart/ftdetect/dart.vim
 augroup filetype_dart

@@ -28,7 +28,7 @@ bindsym $mod+Print exec gnome-screenshot -a
 # Applications
 bindsym $mod+Return exec alacritty
 bindsym $mod+c exec firefox
-bindsym $mod+t exec teams
+bindsym $mod+t exec teams --no-sandbox
 bindsym $mod+d exec dmenu_run
 bindsym $mod+z exec pavucontrol-qt
 bindsym $mod+a exec qalculate-gtk
@@ -42,7 +42,7 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-bindsym $mod+m focus parent
+bindsym $mod+n focus parent
 
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
@@ -97,23 +97,43 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# Resize menu
+# Resize floating
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
 
-		bindsym Left  move left
-		bindsym Down  move down
-		bindsym Up    move up
-		bindsym Right move right
+	bindsym Left  move left
+	bindsym Down  move down
+	bindsym Up    move up
+	bindsym Right move right
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
+
+# Move floating
+mode "move" {
+	bindsym $mod+Tab focus right
+
+	bindsym h     move left
+	bindsym j     move down
+	bindsym k     move up
+	bindsym l     move right
+
+	bindsym Left  move left
+	bindsym Down  move down
+	bindsym Up    move up
+	bindsym Right move right
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+m mode "default"
+}
+bindsym $mod+m mode "move" focus floating
 
 # Status bar
 bar {
@@ -135,4 +155,4 @@ bindsym $mod+x [instance="float_shell"] scratchpad show, move position 960 0, re
 #exec feh --bg-scale .config/i3/wallpaper.jpg --no-startup-id
 
 # i3lock log in
-exec --no-startup-id i3lock -ei .config/i3/drg.png
+#exec --no-startup-id i3lock -ei .config/i3/drg.png
