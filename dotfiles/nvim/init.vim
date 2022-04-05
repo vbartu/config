@@ -116,15 +116,17 @@ nnoremap <silent> <F3> :set list!<CR>
 " Add pacman-installed vim plugins
 set runtimepath+=/usr/share/vim/vimfiles
 
-" Python docstring plugin
-"command! -nargs=0 -range=0 -complete=customlist,pydocstring#insert Pydocstring call pydocstring#insert(<q-args>, <count>, <line1>, <line2>)
-"command! -nargs=0 -complete=customlist,pydocstring#format PydocstringFormat call pydocstring#format()
-
 " FZF plugin
 nnoremap gy :FZF<CR>
 
 " Signify plugin
 set updatetime=100
+
+" Simplenote plugin
+" let g:SimplenoteUsername = "..."
+" let g:SimplenotePassword = "..."
+source ~/.simplenoterc
+
 " }}}
 
 " Especific files {{{
