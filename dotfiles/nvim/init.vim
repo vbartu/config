@@ -126,15 +126,23 @@ set updatetime=100
 " let g:SimplenoteUsername = "..."
 " let g:SimplenotePassword = "..."
 source ~/.simplenoterc
+nnoremap ss :SimplenoteList<cr>
+nnoremap su :SimplenoteUpdate<cr>
 
 " }}}
 
 " Especific files {{{
-" Vim files
-augroup filetype_vim
+
+" C files
+augroup filetype_c
 	autocmd!
-	autocmd Filetype vim setlocal foldmethod=marker
-	autocmd Filetype vim setlocal foldlevelstart=-1 " Fold everything
+	autocmd Filetype c setlocal commentstring=//\ %s
+augroup END
+
+" Cpp files
+augroup filetype_cpp
+	autocmd!
+	autocmd Filetype c setlocal commentstring=//\ %s
 augroup END
 
 " Python files

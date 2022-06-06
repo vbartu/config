@@ -35,6 +35,7 @@ bindsym $mod+a exec qalculate-gtk
 bindsym $mod+u exec --no-startup-id alacritty --class float_shell
 bindsym $mod+i exec i3lock -ei .config/i3/drg.png
 bindsym $mod+q kill
+bindsym $mod+b exec python /home/vicente/devel/birthdays/birthdays.py
 
 
 # Windows movement
