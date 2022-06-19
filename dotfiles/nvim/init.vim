@@ -1,11 +1,9 @@
-" TODO: tags, registers, marks, record
-" :h index :map
 set encoding=utf-8
 set mouse=a
-
 set hidden " Allow hidden buffers
-"set foldlevelstart=99 " By default, open without folding
 let mapleader="," " Leader key
+inoremap jk <Esc>
+
 
 " Clipboard copy/paste
 nnoremap <leader>d "+d
@@ -15,22 +13,12 @@ vnoremap <leader>d "+d
 vnoremap <leader>y "+y
 vnoremap <leader>p "+p
 
-" Remap Esc
-inoremap jk <Esc>
-
-" Uppercase
-inoremap <C-u> <esc>viwU<esc>i
-nnoremap <C-u> viwU<esc>
-
+"
 " Quick edit vimrc
 :nnoremap <leader>ev :tabe $MYVIMRC<cr>
 :nnoremap <leader>r :source $MYVIMRC<cr>
 
-" Comments
-autocmd Filetype vim nnoremap <leader>c 0i"<esc>0
-autocmd Filetype vim nnoremap <leader>v :s/^"//<cr>:noh<cr>0
 
-" Appareance {{{
 " Theme and colors
 syntax on
 set hlsearch
@@ -41,12 +29,13 @@ if exists('+termguicolors')
 endif
 colorscheme onehalfdark
 
+
 " Number and cursorline
 set number
 set cursorline
-" }}}
 
-" Tab default config {{{
+
+" Tab default config
 set noexpandtab    " if set, spaces instead of tabs
 set tabstop=4      " tab char looks like 4 spaces
 set shiftwidth=4   " tab length for <</>>, depends on expandtab
@@ -55,9 +44,9 @@ set softtabstop=4  " soft tab length (uses mix of tabs and spaces)
 set shiftround     " shift indent to shiftwdth multiple
 set autoindent     " copies current indent to new line
 inoremap <S-Tab> <C-d>
-" }}}
 
-" Navigation {{{
+
+" Navigation
 set splitright
 set splitbelow
 nnoremap <C-J> <C-W><C-J>
@@ -76,11 +65,10 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
-" }}}
 
-" Status line {{{
+
+" Status line
 "autocmd WinLeave * highlight StatusModeColor ctermfg=15 ctermbg=239 cterm=Bold
-
 function! StatusMode()
 	let mode = mode()
 	if mode == "n"
@@ -101,18 +89,20 @@ set statusline+=%{v:register}
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\ %3p%%\ (%l/%L)\ %4l:%-3c
-" }}}
 
-" Functions {{{
+
+" Functions
+"
 " F2 Set 80 char limit
 nnoremap <silent> <F2> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
 
 " F3 Show whitespaces
 set listchars=space:·,eol:¬,tab:▸\ ,trail:~,precedes:«,extends:»
 nnoremap <silent> <F3> :set list!<CR>
-" }}}
 
-" Plugins {{{
+
+" Plugins
+"
 " Add pacman-installed vim plugins
 set runtimepath+=/usr/share/vim/vimfiles
 
@@ -129,10 +119,9 @@ source ~/.simplenoterc
 nnoremap ss :SimplenoteList<cr>
 nnoremap su :SimplenoteUpdate<cr>
 
-" }}}
 
-" Especific files {{{
-
+" Especific files
+"
 " C files
 augroup filetype_c
 	autocmd!
@@ -156,12 +145,3 @@ augroup filetype_java
 	autocmd!
 	autocmd Filetype java setlocal expandtab
 augroup END
-
-" Dart files
-runtime dart/ftdetect/dart.vim
-augroup filetype_dart
-	autocmd!
-	autocmd Filetype dart setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd Filetype dart runtime dart/syntax/dart.vim
-augroup END
-" }}}
