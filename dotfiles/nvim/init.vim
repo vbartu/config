@@ -101,27 +101,8 @@ set listchars=space:·,eol:¬,tab:▸\ ,trail:~,precedes:«,extends:»
 nnoremap <silent> <F3> :set list!<CR>
 
 
-" Plugins
-"
-" Add pacman-installed vim plugins
-set runtimepath+=/usr/share/vim/vimfiles
-
-" FZF plugin
-nnoremap gy :FZF<CR>
-
-" Signify plugin
-set updatetime=100
-
-" Simplenote plugin
-" let g:SimplenoteUsername = "..."
-" let g:SimplenotePassword = "..."
-source ~/.simplenoterc
-nnoremap ss :SimplenoteList<cr>
-nnoremap su :SimplenoteUpdate<cr>
-
-
 " Especific files
-"
+
 " C files
 augroup filetype_c
 	autocmd!
@@ -145,3 +126,29 @@ augroup filetype_java
 	autocmd!
 	autocmd Filetype java setlocal expandtab
 augroup END
+
+
+" Plugins
+
+" Add pacman-installed vim plugins
+set runtimepath+=/usr/share/vim/vimfiles
+
+" Plug
+call plug#begin()
+Plug 'mhinz/vim-signify'
+Plug 'simplenote-vim/simplenote.vim'
+Plug 'tpope/vim-commentary'
+call plug#end()
+
+" FZF plugin
+nnoremap gy :FZF<CR>
+
+" Signify plugin
+set updatetime=100
+
+" Simplenote plugin
+" let g:SimplenoteUsername = "..."
+" let g:SimplenotePassword = "..."
+source ~/.simplenoterc
+nnoremap ss :SimplenoteList<cr>
+nnoremap su :SimplenoteUpdate<cr>
