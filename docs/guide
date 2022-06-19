@@ -142,5 +142,7 @@ ANSI escape codes:
   Color: 256 fg 38;5:{n}m bg 48;5;{n}m options:
     reset bold dim italic underline [01234]m, 8fg30-37m 8bg40-47m
 
-
-Connection setup: systemd-networkd + systemd-resolved + iwd (wifi)
+Network setup
+	IP (dhcp): systemd-networkd | dhcpcd
+	DNS: /etc/resolv.conf | systemd-resolved
+	Wifi: iwd
