@@ -46,7 +46,9 @@ export ANDROID_SDK_ROOT=~/work/android
 export CHROME_EXECUTABLE=/opt/google/chrome/chrome
 
 # PATH
-export PATH=~/.local/bin:~/devel/config/scripts:$PATH
+export PATH=~/.local/bin:$PATH
+export PATH=~/devel/config/scripts:$PATH
+export PATH=~/.cargo/bin:$PATH
 
 # History tweaks
 shopt -s histappend
@@ -60,6 +62,7 @@ export PROMPT_COMMAND='history -a'
 # Misc
 export LESSHISTFILE=-
 export EDITOR=nvim
+export FZF_DEFAULT_COMMAND='rg --files'
 
 # Git agent
 eval `ssh-agent` &> /dev/null

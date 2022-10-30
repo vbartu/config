@@ -35,7 +35,8 @@ bindsym $mod+a exec qalculate-gtk
 bindsym $mod+u exec --no-startup-id alacritty --class float_shell
 bindsym $mod+i exec i3lock -ei .config/i3/drg.png
 bindsym $mod+q kill
-bindsym $mod+b exec python /home/vicente/devel/birthdays/birthdays.py
+bindsym $mod+b exec python /home/vicente/devel/projects/birthdays/birthdays.py
+bindsym $mod+s exec /home/vicente/devel/config/scripts/set-screen
 
 
 # Windows movement
@@ -54,7 +55,6 @@ bindsym $mod+minus split v
 bindsym $mod+period split h
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -154,6 +154,7 @@ bindsym $mod+x [instance="float_shell"] scratchpad show, move position 960 0, re
 
 # Wallpaper
 #exec feh --bg-scale .config/i3/wallpaper.jpg --no-startup-id
+exec feh --bg-max .config/i3/jinx.jpg --no-startup-id
 
 # i3lock log in
 #exec --no-startup-id i3lock -ei .config/i3/drg.png
