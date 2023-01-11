@@ -1,13 +1,21 @@
 #!/bin/bash
 
+
+device="98:67:2E:D1:F6:F4"
+
+if [[ $2 == 1 ]]; then
+	device="98:67:2E:D1:F6:F4"
+elif [[ $2 == 2 ]]; then
+	device="54:71:DD:5A:88:93"
+fi
+
 if [[ $1 == "on" ]]; then
 	bluetoothctl power on > /dev/null
 	pactl info > /dev/null #This somehow loads BL module
-	bluetoothctl connect 54:71:DD:5A:88:93 > /dev/null
+	bluetoothctl connect $device > /dev/null
 	pactl set-card-profile 0 input:analog-stereo
 elif [[ $1 == "off" ]]; then
 	pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
-	bluetoothctl disconnect 54:71:DD:5A:88:93 > /dev/null
 	bluetoothctl power off > /dev/null
 else
 	echo "Missing action: on/off"
