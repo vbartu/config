@@ -5,11 +5,22 @@ UNIQUE_ID=100299
 APP=Backlight
 
 max=$(cat /sys/class/backlight/$BACKLIGHT/max_brightness)
-step=$((max * $2 / 100))
-
 actual=$(cat /sys/class/backlight/$BACKLIGHT/actual_brightness)
 
+echo $max
+echo $actual
+
+
 if [[ $1 == "-i" ]]; then
+	if [[ actual -lt $((max * 10 / 100)) ]]; then
+		percentage=2
+	elif [[ actual -lt $((max * 30 / 100)) ]]; then
+		percentage=5
+	else
+		percentage=10
+	fi
+
+	step=$((max * percentage / 100))
 	inc=$((actual + step))
 	if [[ $inc -ge $max ]]; then
 		inc=$max
@@ -19,6 +30,15 @@ if [[ $1 == "-i" ]]; then
 	dunstify "Backlight: $((new * 100 / max))%" -r $UNIQUE_ID -a $APP
 
 elif [[ $1 == "-d" ]]; then
+	if [[ actual -lt $((max * 11 / 100)) ]]; then
+		percentage=2
+	elif [[ actual -lt $((max * 31 / 100)) ]]; then
+		percentage=5
+	else
+		percentage=10
+	fi
+
+	step=$((max * percentage / 100))
 	dec=$((actual - step))
 	if [[ $dec -le "0" ]]; then
 		dec="1"
