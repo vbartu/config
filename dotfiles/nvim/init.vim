@@ -23,9 +23,9 @@ vnoremap <leader>p "+p
 syntax on
 set hlsearch
 if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
 endif
 
 
@@ -35,13 +35,10 @@ set cursorline
 
 
 " Tab default config
-set noexpandtab    " if set, spaces instead of tabs
-set tabstop=4      " tab char looks like 4 spaces
-set shiftwidth=4   " tab length for <</>>, depends on expandtab
-set smarttab       " shiftwidth used also in front of line, ts/sts otherwise
-set softtabstop=4  " soft tab length (uses mix of tabs and spaces)
-set shiftround     " shift indent to shiftwdth multiple
-set autoindent     " copies current indent to new line
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set shiftround " shift indent to shiftwdth multiple
 inoremap <S-Tab> <C-d>
 
 
@@ -69,16 +66,16 @@ inoremap <Right> <Nop>
 " Status line
 "autocmd WinLeave * highlight StatusModeColor ctermfg=15 ctermbg=239 cterm=Bold
 function! StatusMode()
-	let mode = mode()
-	if mode == "n"
-		return " NORMAL "
-	elseif mode == "i"
-		return " INSERT "
-	elseif mode == "v"
-		return " VISUAL "
-	else
-		return ""
-	endif
+    let mode = mode()
+    if mode == "n"
+        return " NORMAL "
+    elseif mode == "i"
+        return " INSERT "
+    elseif mode == "v"
+        return " VISUAL "
+    else
+        return ""
+    endif
 endfunction
 set laststatus=2
 set statusline=
@@ -104,12 +101,12 @@ let g:cmp_enable = v:false
 function! ToggleAutocomplete()
    if g:cmp_enable
       let g:cmp_enable = v:false
-	  set signcolumn=auto
-	  set completeopt=menu,preview
+      set signcolumn=auto
+      set completeopt=menu,preview
    else
       let g:cmp_enable = v:true
-	  set signcolumn=auto:2
-	  set completeopt=menuone,noinsert,noselect
+      set signcolumn=auto:2
+      set completeopt=menuone,noinsert,noselect
    endif
 endfunction
 nnoremap <F4> :call ToggleAutocomplete()<CR>
@@ -119,26 +116,26 @@ nnoremap <F4> :call ToggleAutocomplete()<CR>
 
 " C files
 augroup filetype_c
-	autocmd!
-	autocmd Filetype c setlocal commentstring=//\ %s
+    autocmd!
+    autocmd Filetype c setlocal commentstring=//\ %s
 augroup END
 
 " Cpp files
 augroup filetype_cpp
-	autocmd!
-	autocmd Filetype c setlocal commentstring=//\ %s
+    autocmd!
+    autocmd Filetype c setlocal commentstring=//\ %s
 augroup END
 
 " Python files
 augroup filetype_python
-	autocmd!
-	autocmd Filetype python setlocal expandtab
+    autocmd!
+    autocmd Filetype python setlocal expandtab
 augroup END
 
 " Java files
 augroup filetype_java
-	autocmd!
-	autocmd Filetype java setlocal expandtab
+    autocmd!
+    autocmd Filetype java setlocal expandtab
 augroup END
 
 
