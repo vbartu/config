@@ -1,0 +1,35 @@
+types:
+	statically typed
+		dynamic (dinamic type)
+		var (automatic type, dynamic if not initialized)
+		int (manual type)
+		const (int) (constant at compile time)
+		final (int) (constant at runtime)
+	special types:
+		List<String> = [];
+		Set<int> = {};
+		Map<String, float> = {
+			"Value" : 2.3,
+		}
+
+functions:
+	void func() {...}
+	String func2() => "hello";
+	doens't need name
+	func2((s) {...});
+
+
+class:
+	class Class1 extend Class2 {
+		int variable1 = 20;
+		User(int variable1) {
+			this.variable1 = variable1;	
+		}
+		int method1() {return this.variable1;}
+	}
+
+Cascades:
+	a = MyObj().someMethod() // a is result of someMethod()
+	a = MyObj()..someMethod() // a is result of MyObj()
+
+https://dart.dev/codelabs/dart-cheatsheet
