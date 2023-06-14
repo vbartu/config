@@ -32,3 +32,5 @@ if [[ -z "$(ls -A $BACKUP)" ]]; then
 else
     echo "Backup files copied to $BACKUP"
 fi
+
+echo "Remember to copy any specific config to ~/.bash_company"

@@ -56,5 +56,7 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # Add default identity
 [[ -r ~/.ssh/id_ed25519 ]] && ssh-add ~/.ssh/id_ed25519 &> /dev/null
 
+# Add company dependant configuration
+[[ -r ~/.bash_company ]] && . ~/.bash_company
 
 export PS1="\[\e[36m\][\u@\h \[\e[33m\]\W\[\e[36m\]]\\$\[\e[m\] "
