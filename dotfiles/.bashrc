@@ -10,6 +10,8 @@
 [[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
 [[ -r /usr/share/fzf/key-bindings.bash ]] && . /usr/share/fzf/key-bindings.bash
 [[ -r /usr/share/fzf/completion.bash ]] && . /usr/share/fzf/completion.bash
+[[ -r /usr/share/doc/fzf/key-bindings.bash ]] && . /usr/share/doc/fzf/key-bindings.bash
+[[ -r /usr/share/doc/fzf/completion.bash ]] && . /usr/share/doc/fzf/completion.bash
 
 # Alias
 alias ls='ls --color=auto --group-directories-first'
@@ -21,12 +23,14 @@ alias grep='grep --color=auto'
 alias guide='cat ~/devel/config/docs/guide | less'
 alias makej='make -j8'
 alias duu='du -hd1 2>/dev/null | sort -hr'
+[[ -x /usr/bin/helix ]] && alias hx='helix'
+[[ -x /usr/fdfind ]] && alias fd='fdfind'
 
 # Keybinds
 stty stop '' # Free ^S
-bind '"\023":"\022"' # Bind to ^R
+bind '"\023":"\022"' # Bind it to ^R
 stty start '' # Free ^Q
-bind '"\021":"\ec"' # Bind to Alt+C
+bind '"\021":"\ec"' # Bind it to Alt+C
 
 # PATH
 export PATH=~/.local/bin:$PATH
@@ -48,7 +52,9 @@ export EDITOR=nvim
 export FZF_DEFAULT_COMMAND='rg --files'
 
 # Git agent
-eval `ssh-agent` &> /dev/null
-ssh-add ~/.ssh/id_ed25519 &> /dev/null
+[[ -z "$SSH_AUTH_SOCK" ]] && echo "Eval ssh agent" && eval $(ssh-agent -s) &> /dev/null
+# Add default identity
+[[ -r ~/.ssh/id_ed25519 ]] && ssh-add ~/.ssh/id_ed25519 &> /dev/null
 
-export PS1="\[\e[36m\][\[\e[m\]\[\e[36m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[36m\]\h\[\e[m\] \[\e[33m\]\W\[\e[m\]\[\e[36m\]]\[\e[m\]\[\e[36m\]\\$\[\e[m\] "
+
+export PS1="\[\e[36m\][\u@\h \[\e[33m\]\W\[\e[36m\]]\\$\[\e[m\] "
