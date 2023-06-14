@@ -24,7 +24,7 @@ alias guide='cat ~/devel/config/docs/guide | less'
 alias makej='make -j8'
 alias duu='du -hd1 2>/dev/null | sort -hr'
 [[ -x /usr/bin/helix ]] && alias hx='helix'
-[[ -x /usr/fdfind ]] && alias fd='fdfind'
+[[ -x /usr/bin/fdfind ]] && alias fd='fdfind'
 
 # Keybinds
 stty stop '' # Free ^S
