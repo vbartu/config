@@ -1,6 +1,10 @@
 #
 # ~/.bash_profile
 #
+
+# Git agent
+[[ -z "$SSH_AUTH_SOCK" ]] && eval $(ssh-agent -s)
+
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     exec startx
 fi

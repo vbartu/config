@@ -51,8 +51,6 @@ export LESSHISTFILE=-
 export EDITOR=nvim
 export FZF_DEFAULT_COMMAND='rg --files'
 
-# Git agent
-[[ -z "$SSH_AUTH_SOCK" ]] && echo "Eval ssh agent" && eval $(ssh-agent -s) &> /dev/null
 # Add default identity
 [[ -r ~/.ssh/id_ed25519 ]] && ssh-add ~/.ssh/id_ed25519 &> /dev/null
 

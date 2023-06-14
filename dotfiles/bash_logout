@@ -1,0 +1,2 @@
+# Stop git agent
+[[ -n "$SSH_AUTH_SOCK" ]] && kill $SSH_AGENT_PID
