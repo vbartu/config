@@ -32,6 +32,9 @@ bind '"\023":"\022"' # Bind it to ^R
 stty start '' # Free ^Q
 bind '"\021":"\ec"' # Bind it to Alt+C
 
+# Add company dependant configuration
+[[ -r ~/.bash_company ]] && . ~/.bash_company
+
 # PATH
 export PATH=~/.local/bin:$PATH
 export PATH=~/devel/config/scripts:$PATH
@@ -53,8 +56,5 @@ export FZF_DEFAULT_COMMAND='rg --files'
 
 # Add default identity
 [[ -r ~/.ssh/id_ed25519 ]] && ssh-add ~/.ssh/id_ed25519 &> /dev/null
-
-# Add company dependant configuration
-[[ -r ~/.bash_company ]] && . ~/.bash_company
 
 export PS1="\[\e[36m\][\u@\h \[\e[33m\]\W\[\e[36m\]]\\$\[\e[m\] "
