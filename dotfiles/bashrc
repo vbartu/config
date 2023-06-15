@@ -10,8 +10,8 @@
 [[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
 [[ -r /usr/share/fzf/key-bindings.bash ]] && . /usr/share/fzf/key-bindings.bash
 [[ -r /usr/share/fzf/completion.bash ]] && . /usr/share/fzf/completion.bash
-[[ -r /usr/share/doc/fzf/key-bindings.bash ]] && . /usr/share/doc/fzf/key-bindings.bash
-[[ -r /usr/share/doc/fzf/completion.bash ]] && . /usr/share/doc/fzf/completion.bash
+[[ -r /usr/share/doc/fzf/examples/key-bindings.bash ]] && . /usr/share/doc/fzf/examples/key-bindings.bash
+[[ -r /usr/share/doc/fzf/examples/completion.bash ]] && . /usr/share/doc/fzf/examples/completion.bash
 
 # Alias
 alias ls='ls --color=auto --group-directories-first'
