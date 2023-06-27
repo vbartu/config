@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 vim.opt.hlsearch = true
 vim.opt.number = true
 vim.opt.cursorline = true
+vim.wo.signcolumn = "yes"
 
 -- Clipboard copy/paste
 vim.keymap.set("n", "<Leader>d", "\"+d")
@@ -97,6 +98,7 @@ require("lazy").setup({
     "mhinz/vim-signify",
     "ibhagwan/fzf-lua",
     "neovim/nvim-lspconfig",
+    "Mofiqul/trld.nvim",
     -- Completion
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-buffer",
@@ -135,10 +137,6 @@ for _, server in ipairs(servers) do
     lspconfig[server].setup({capabilities = capabilites})
 end
 
-vim.keymap.set("n", ",e", vim.diagnostic.open_float)
-vim.keymap.set("n", ",n", vim.diagnostic.goto_next)
-vim.keymap.set("n", ",p", vim.diagnostic.goto_prev)
-vim.keymap.set("n", ",q", vim.diagnostic.setloclist)
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
@@ -153,6 +151,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', ',k', vim.lsp.buf.hover, opts)
     end
 })
+
+-- Diagnostics
+require("trld").setup{} -- Top-right corner diagnostics
+vim.diagnostic.config({ virtual_text = false })
+vim.keymap.set("n", ",e", vim.diagnostic.open_float)
+vim.keymap.set("n", ",n", vim.diagnostic.goto_next)
+vim.keymap.set("n", ",p", vim.diagnostic.goto_prev)
+vim.keymap.set("n", ",q", vim.diagnostic.setloclist)
 
 
 -- Autocompletion
