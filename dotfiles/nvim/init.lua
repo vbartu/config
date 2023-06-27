@@ -129,14 +129,7 @@ require'nvim-treesitter.configs'.setup {
 
 
 -- LSP
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-servers = {"pylsp"}
-for _, server in ipairs(servers) do
-    lspconfig[server].setup({capabilities = capabilites})
-end
-
+require("pylsp")
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
@@ -153,12 +146,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Diagnostics
-require("trld").setup{} -- Top-right corner diagnostics
-vim.diagnostic.config({ virtual_text = false })
+-- Top-right corner diagnostic
+require("trld").setup({})
+vim.diagnostic.config({
+    virtual_text = false,
+    underline = {severity = vim.diagnostic.severity.WARN},
+})
 vim.keymap.set("n", ",e", vim.diagnostic.open_float)
 vim.keymap.set("n", ",n", vim.diagnostic.goto_next)
 vim.keymap.set("n", ",p", vim.diagnostic.goto_prev)
 vim.keymap.set("n", ",q", vim.diagnostic.setloclist)
+
+local function toggle_diagnostics()
+	if vim.diagnostic.is_disabled() then
+        vim.diagnostic.enable()
+        print("Diagnostics enabled")
+	else
+        vim.diagnostic.disable()
+        print("Diagnostics disabled")
+	end
+end
+vim.keymap.set("n", "<F4>", toggle_diagnostics)
 
 
 -- Autocompletion
@@ -217,4 +225,3 @@ local function toggle_autocompletion()
         print("Autocompletion enabled")
 	end
 end
-vim.keymap.set("n", "<F4>", toggle_autocompletion)
