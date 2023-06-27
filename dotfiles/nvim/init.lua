@@ -97,7 +97,9 @@ require("lazy").setup({
     "mhinz/vim-signify",
     "ibhagwan/fzf-lua",
     "neovim/nvim-lspconfig",
+    -- Completion
     "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
     "saadparwaiz1/cmp_luasnip",
     "L3MON4D3/LuaSnip",
@@ -191,7 +193,22 @@ cmp.setup({
     end, { 'i', 's' }),
   }),
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    {name = "nvim_lsp"},
+    {name = "luasnip"},
+    {name = "buffer"},
   },
 })
+
+local cmp_enabled = true
+local function toggle_autocompletion()
+	if cmp_enabled then
+		require("cmp").setup.buffer({ enabled = false })
+		cmp_enabled = false
+        print("Autocompletion disabled")
+	else
+		require("cmp").setup.buffer({ enabled = true })
+		cmp_enabled = true
+        print("Autocompletion enabled")
+	end
+end
+vim.keymap.set("n", "<F4>", toggle_autocompletion)
