@@ -19,3 +19,5 @@ alias firefox="firefox_launcher.py"
 
 # Enable graphics apps in WSL
 [[ -z "$DISPLAY" ]] && export DISPLAY=:0
+
+export PS1="\[\e[36m\][\u@\e[32m\h \[\e[33m\]\W\[\e[36m\]]\\$\[\e[m\] "
