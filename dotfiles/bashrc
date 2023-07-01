@@ -57,6 +57,8 @@ export FZF_DEFAULT_COMMAND='rg --files'
 # Add default identity
 [[ -r ~/.ssh/id_ed25519 ]] && ssh-add ~/.ssh/id_ed25519 &> /dev/null
 
-if [[ -z $PS1 ]]; then
+if [[ -z $PROMPT ]]; then
     export PS1="\[\e[36m\][\u@\h \[\e[33m\]\W\[\e[36m\]]\\$\[\e[m\] "
+else
+    export PS1=$PROMPT
 fi
