@@ -36,9 +36,18 @@ bind '"\021":"\ec"' # Bind it to Alt+C
 [[ -r ~/.bash_company ]] && . ~/.bash_company
 
 # PATH
-export PATH=~/.local/bin:$PATH
-export PATH=~/devel/config/scripts:$PATH
-export PATH=~/.cargo/bin:$PATH
+add_to_path() {
+    [[ -z $1 ]] && return
+    local DIR=$(eval echo $1)
+    if ! echo $PATH | sed 's/:/\n/g' | grep "^$DIR$" &>/dev/null; then
+        export PATH=$DIR:$PATH
+    fi
+}
+
+
+add_to_path "~/.local/bin"
+add_to_path "~/devel/config/scripts"
+add_to_path "~/.cargo/bin"
 
 # History tweaks
 shopt -s histappend
