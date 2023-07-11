@@ -18,7 +18,7 @@ lspconfig.pylsp.setup({ -- pkgs python-lsp-server, python-rope, yapf
                 pylint = { --pkg python-pylint
                     enabled = true,
                     executable = "pylint",
-                    args = {"-d C0114,C0115,C0116"},
+                    args = {"-d C0114,C0115,C0116,R0913"},
                 },
                 pylsp_mypy = { -- pkg python-pylsp-mypy (AUR)
                     enabled = true,
