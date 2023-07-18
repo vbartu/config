@@ -156,3 +156,6 @@ Network setup
 	IP (dhcp): systemd-networkd | dhcpcd
 	DNS: /etc/resolv.conf | systemd-resolved
 	Wifi: iwd
+
+Hardware
+	Redpitaya

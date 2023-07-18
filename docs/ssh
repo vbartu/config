@@ -1,0 +1,33 @@
+scp: Copy files.
+sftp: Copy files interactively.
+ssh-add: Adds private key identity to ssh-agent. -L lists.
+ssh-agent: Used for authentication when logging in to other machines using
+           ssh. This is what happens whit git+ssh. Found through env.
+ssh-copy-id: Adds identity (public key) to ~/.ssh/authorized_keys in the
+             remote server, allowing logging in with the agent (no password).
+ssh-keygen: Generates keys for ssh.
+    ssh-keygen -t ecdsa -b 521 -f filename
+
+Files:
+authorized_keys: (Host) Stores client public keys to allow them to connect
+                 without password.
+known_hosts: (Client) Stores hosts public keys, to confirm that they are still
+             the same when the client connects again.
+config: (Client) Add host connection configuration, to connect with an alias.
+    host name-for-the-host
+        Hostname ip/url
+        User remote-user
+        Port 34567
+        IdentityFile ~/.ssh/id_ed25519
+        ProxyJump another-host-name
+
+
+ssh
+
+Tunnels:
+https://iximiuz.com/ssh-tunnels/ssh-tunnels.png
+https://iximiuz.com/en/posts/ssh-tunnels/
+
+
+sshd
+TODO: overview of options
