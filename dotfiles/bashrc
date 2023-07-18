@@ -23,6 +23,7 @@ alias grep='grep --color=auto'
 alias guide='cat ~/devel/config/docs/guide | less'
 alias makej='make -j8'
 alias duu='du -hd1 2>/dev/null | sort -hr'
+alias venva='source venv/bin/activate'
 [[ -x /usr/bin/helix ]] && alias hx='helix'
 [[ -x /usr/bin/fdfind ]] && alias fd='fdfind'
 
