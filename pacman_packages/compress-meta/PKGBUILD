@@ -1,0 +1,13 @@
+pkgname=compress-meta
+pkgver="1.0.0"
+pkgrel=1
+pkgdesc="Compress utilities"
+arch=(any)
+license=('GPL')
+depends=(bzip2
+         gzip
+         pigz
+         tar
+         unzip
+         xz
+         zip)

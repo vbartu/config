@@ -1,0 +1,15 @@
+pkgname=net-meta
+pkgver="1.0.0"
+pkgrel=1
+pkgdesc="Network utilities"
+arch=(any)
+license=('GPL')
+depends=(arp-scan
+         curl
+         dhcp
+         gnu-netcat
+         nmap
+         openssh
+         rclone
+         rsync
+         wget)
