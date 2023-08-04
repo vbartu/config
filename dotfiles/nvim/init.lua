@@ -133,6 +133,7 @@ require("pylsp")
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 lspconfig.rust_analyzer.setup({capabilities = capabilites})
+lspconfig.clangd.setup({capabilites = capabilites})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
