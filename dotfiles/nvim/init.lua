@@ -99,6 +99,7 @@ require("lazy").setup({
     "ibhagwan/fzf-lua",
     "neovim/nvim-lspconfig",
     "Mofiqul/trld.nvim",
+    "nmac427/guess-indent.nvim",
     -- Completion
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-buffer",
@@ -109,6 +110,7 @@ require("lazy").setup({
 
 -- Plugins related config
 vim.cmd("colorscheme nightfox")
+require("guess-indent").setup({})
 
 -- Allows vim-signify to update in realtime
 vim.opt.updatetime = 100 
@@ -119,6 +121,7 @@ vim.keymap.set("n", "<Leader>f", fzf.files)
 vim.keymap.set("n", "<Leader>s", fzf.git_status)
 vim.keymap.set("n", "<Leader>g", fzf.live_grep)
 vim.keymap.set("v", "<Leader>v", fzf.grep_visual)
+vim.keymap.set("n", "<Leader>w", fzf.grep_cword)
 
 -- TreeSitter
 require'nvim-treesitter.configs'.setup {
