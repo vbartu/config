@@ -37,7 +37,6 @@ alias makej='make -j8'
 alias duu='du -hd1 2>/dev/null | sort -hr'
 alias venva='source venv/bin/activate'
 command -v fdfind &> /dev/null && alias fd='fdfind'
-command -v most &> /dev/null && alias man='man -P most'
 
 # Keybinds
 stty stop '' # Free ^S
