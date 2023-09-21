@@ -7,12 +7,12 @@ vim.opt.cursorline = true
 vim.wo.signcolumn = "yes"
 
 -- Clipboard copy/paste
-vim.keymap.set("n", "<Leader>d", "\"+d")
-vim.keymap.set("n", "<Leader>y", "\"+y")
-vim.keymap.set("n", "<Leader>p", "\"+p")
-vim.keymap.set("v", "<Leader>d", "\"+d")
-vim.keymap.set("v", "<Leader>y", "\"+y")
-vim.keymap.set("v", "<Leader>p", "\"+p")
+vim.keymap.set("n", ",d", "\"+d")
+vim.keymap.set("n", ",y", "\"+y")
+vim.keymap.set("n", ",p", "\"+p")
+vim.keymap.set("v", ",d", "\"+d")
+vim.keymap.set("v", ",y", "\"+y")
+vim.keymap.set("v", ",p", "\"+p")
 
 -- Tabs
 vim.opt.expandtab = true
@@ -32,6 +32,16 @@ vim.keymap.set("n", "H", "^")
 vim.keymap.set("n", "L", "$")
 vim.keymap.set("n", "<C-e>", "3<C-e>")
 vim.keymap.set("n", "<C-y>", "3<C-y>")
+
+-- Shortcuts
+local shortcuts_file = vim.fn.stdpath("config") .. "/nvim_shortcuts"
+vim.keymap.set("n", "<Leader>a", ":!cat " .. shortcuts_file .. "<CR>")
+local function reopen_new_tab()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    vim.cmd("tabe %:p")
+    vim.cmd("call cursor(" .. row .. "," .. col+1 ..")")
+end
+vim.keymap.set("n", "<Leader>t", reopen_new_tab)
 
 -- Status line
 vim.cmd([[
@@ -118,10 +128,12 @@ vim.opt.updatetime = 100
 -- FZF
 local fzf = require("fzf-lua")
 vim.keymap.set("n", "<Leader>f", fzf.files)
-vim.keymap.set("n", "<Leader>s", fzf.git_status)
+vim.keymap.set("n", "<Leader>s", fzf.lsp_document_symbols)
+vim.keymap.set("n", "<Leader>S", fzf.lsp_workspace_symbols)
 vim.keymap.set("n", "<Leader>g", fzf.live_grep)
 vim.keymap.set("v", "<Leader>v", fzf.grep_visual)
 vim.keymap.set("n", "<Leader>w", fzf.grep_cword)
+vim.keymap.set("n", "<Leader>d", fzf.diagnostics_document)
 
 -- TreeSitter
 require'nvim-treesitter.configs'.setup {
@@ -147,6 +159,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local opts = { buffer = ev.buf }
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'gt', fzf.lsp_typedefs, opts)
         vim.keymap.set('n', 'gr', fzf.lsp_references, opts)
         vim.keymap.set('n', ',r', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', ',k', vim.lsp.buf.hover, opts)
@@ -161,9 +174,6 @@ vim.diagnostic.config({
     underline = {severity = vim.diagnostic.severity.WARN},
 })
 vim.keymap.set("n", ",e", vim.diagnostic.open_float)
-vim.keymap.set("n", ",n", vim.diagnostic.goto_next)
-vim.keymap.set("n", ",p", vim.diagnostic.goto_prev)
-vim.keymap.set("n", ",q", vim.diagnostic.setloclist)
 
 local function toggle_diagnostics()
 	if vim.diagnostic.is_disabled() then

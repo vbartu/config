@@ -1,0 +1,24 @@
+i   S-Tab           -> remote tab
+n   Ctrl + e/y      -> Scroll up/down faster
+n   Ctrl + j/k/l/h  -> move to u/d/r/l window
+n   H/L             -> move to beginning/end of line
+n   SPACE + a       -> show this guide
+n   SPACE + f       -> fzf files
+n   SPACE + s       -> fzf symbols in file
+n   SPACE + S       -> fzf symbols in project
+n   SPACE + g       -> fzf live grep
+v   SPACE + v       -> fzf grep visual selection
+n   SPACE + w       -> fzf grep word
+n   SPACE + d       -> fzf diagnostics in file
+n   SPACE + t       -> reopen file in new tab
+n   g + D           -> go to declaration
+n   g + d           -> go to definition
+n   g + t           -> go to fzf type
+n   g + r           -> fzf references
+n   , + r           -> rename symbol
+n   , + k           -> float doc (Ctrl + u/d), x2 goes into
+n   , + e           -> float error (Ctrl + u/d), x2 goes into
+v/n , + d/y/p       -> cut/copy/paste to clipboard
+n   F2              -> Set 80 column bar
+n   F3              -> Show blank chars
+n   F4              -> Toggle diagnostics
