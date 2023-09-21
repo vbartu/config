@@ -5,6 +5,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# PATH
+add_to_path() {
+    [[ -z $1 ]] && return
+    local DIR=$(eval echo $1)
+    if ! echo $PATH | sed 's/:/\n/g' | grep "^$DIR$" &>/dev/null; then
+        export PATH=$DIR:$PATH
+    fi
+}
+
+add_to_path "~/.local/bin"
+add_to_path "~/devel/config/scripts"
+add_to_path "~/.cargo/bin"
 
 # Autocomplete
 [[ -r /usr/share/bash-completion/bash_completion ]] && . /usr/share/bash-completion/bash_completion
@@ -24,8 +36,8 @@ alias guide='cat ~/devel/config/docs/guide | less'
 alias makej='make -j8'
 alias duu='du -hd1 2>/dev/null | sort -hr'
 alias venva='source venv/bin/activate'
-[[ -x /usr/bin/helix ]] && alias hx='helix'
-[[ -x /usr/bin/fdfind ]] && alias fd='fdfind'
+command -v fdfind &> /dev/null && alias fd='fdfind'
+command -v most &> /dev/null && alias man='man -P most'
 
 # Keybinds
 stty stop '' # Free ^S
@@ -35,20 +47,6 @@ bind '"\021":"\ec"' # Bind it to Alt+C
 
 # Add company dependant configuration
 [[ -r ~/.bash_company ]] && . ~/.bash_company
-
-# PATH
-add_to_path() {
-    [[ -z $1 ]] && return
-    local DIR=$(eval echo $1)
-    if ! echo $PATH | sed 's/:/\n/g' | grep "^$DIR$" &>/dev/null; then
-        export PATH=$DIR:$PATH
-    fi
-}
-
-
-add_to_path "~/.local/bin"
-add_to_path "~/devel/config/scripts"
-add_to_path "~/.cargo/bin"
 
 # History tweaks
 shopt -s histappend
