@@ -134,6 +134,7 @@ vim.keymap.set("n", "<Leader>g", fzf.live_grep)
 vim.keymap.set("v", "<Leader>v", fzf.grep_visual)
 vim.keymap.set("n", "<Leader>w", fzf.grep_cword)
 vim.keymap.set("n", "<Leader>d", fzf.diagnostics_document)
+vim.keymap.set("n", "<Leader>m", fzf.man_pages)
 
 -- TreeSitter
 require'nvim-treesitter.configs'.setup {
