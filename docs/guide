@@ -88,6 +88,12 @@ Pacman:
 Journal:
 	-t target(app), -b n (n reboot)
 
+RipGrep:
+  --no-heading (dont group by file)
+  -g (glob, use '!dir' to exclude dir)
+  --no-ignore (dont check gitignore like files)
+  -. (include hidden files)
+
 Grep:
   -e (patterns) -f (file with patterns)
   -E (extended regexp) -F (fixed string)
