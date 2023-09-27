@@ -4,6 +4,10 @@ SSH:
 	.shh/config host something
 		HostName (ip/url), Port, User, IdenityFile (~/.ssh/...)
 
+ss:
+	-a (show all), -p (show processes), -t (show tcp ports), -u (udp),
+	-x (unix) -l (listening ports)
+
 Linux processes:
 	New terminal -> new session -> first job -> only one process (bash)
 		commands: processes of the existing job
