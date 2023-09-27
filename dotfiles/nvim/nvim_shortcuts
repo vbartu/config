@@ -14,7 +14,7 @@ n   SPACE + d       -> fzf diagnostics in file
 n   SPACE + m       -> fzf man pages
 n   g + D           -> go to declaration
 n   g + d           -> go to definition
-n   g + t           -> go to fzf type
+n   g + e           -> go to fzf type
 n   g + r           -> fzf references
 n   , + r           -> rename symbol
 n   , + k           -> float doc (Ctrl + u/d), x2 goes into

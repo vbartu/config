@@ -160,7 +160,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local opts = { buffer = ev.buf }
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'gt', fzf.lsp_typedefs, opts)
+        vim.keymap.set('n', 'ge', fzf.lsp_typedefs, opts)
         vim.keymap.set('n', 'gr', fzf.lsp_references, opts)
         vim.keymap.set('n', ',r', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', ',k', vim.lsp.buf.hover, opts)
