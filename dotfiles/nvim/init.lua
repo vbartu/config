@@ -86,7 +86,6 @@ vim.opt.listchars = {space = "·", eol = '↲', tab = '▸ ', trail = '~',
 vim.keymap.set("n", "<F3>", ":set list!<CR>", {silent = true})
 
 
-
 -- Lazy nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -143,84 +142,12 @@ require'nvim-treesitter.configs'.setup {
   highlight = {enable = true},
 }
 
-
 -- LSP
 require("lsp")
 
 -- Diagnostics
-require("trld").setup({})
-vim.diagnostic.config({
-    virtual_text = false,
-    underline = {severity = vim.diagnostic.severity.WARN},
-    severity_sort = true,
-})
-vim.keymap.set("n", ",e", vim.diagnostic.open_float)
-
-local function toggle_diagnostics()
-	if vim.diagnostic.is_disabled() then
-        vim.diagnostic.enable()
-        print("Diagnostics enabled")
-	else
-        vim.diagnostic.disable()
-        print("Diagnostics disabled")
-	end
-end
-vim.keymap.set("n", "<F4>", toggle_diagnostics)
-
+local diagnostics = require("diagnostics")
+vim.keymap.set("n", "<F4>", diagnostics.toggle_diagnostics)
 
 -- Autocompletion
-local luasnip = require("luasnip")
-local cmp = require("cmp")
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-        ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
-        -- C-b (back) C-f (forward) for snippet placeholder navigation.
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<CR>'] = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-            cmp.select_next_item()
-        elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-        else
-            fallback()
-        end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-            cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-        else
-            fallback()
-        end
-    end, { 'i', 's' }),
-  }),
-  sources = {
-    {name = "nvim_lsp"},
-    {name = "luasnip"},
-    {name = "buffer"},
-  },
-})
-
-local cmp_enabled = true
-local function toggle_autocompletion()
-	if cmp_enabled then
-		require("cmp").setup.buffer({ enabled = false })
-		cmp_enabled = false
-        print("Autocompletion disabled")
-	else
-		require("cmp").setup.buffer({ enabled = true })
-		cmp_enabled = true
-        print("Autocompletion enabled")
-	end
-end
+require("autocompletion")
