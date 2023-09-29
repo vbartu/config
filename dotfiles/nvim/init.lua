@@ -145,34 +145,14 @@ require'nvim-treesitter.configs'.setup {
 
 
 -- LSP
-require("pylsp")
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lspconfig.rust_analyzer.setup({capabilities = capabilites})
-lspconfig.clangd.setup({capabilites = capabilites})
-
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
-        -- Buffer local mappings.
-        local opts = { buffer = ev.buf }
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'ge', fzf.lsp_typedefs, opts)
-        vim.keymap.set('n', 'gr', fzf.lsp_references, opts)
-        vim.keymap.set('n', ',r', vim.lsp.buf.rename, opts)
-        vim.keymap.set('n', ',k', vim.lsp.buf.hover, opts)
-    end
-})
+require("lsp")
 
 -- Diagnostics
--- Top-right corner diagnostic
 require("trld").setup({})
 vim.diagnostic.config({
     virtual_text = false,
     underline = {severity = vim.diagnostic.severity.WARN},
+    severity_sort = true,
 })
 vim.keymap.set("n", ",e", vim.diagnostic.open_float)
 
