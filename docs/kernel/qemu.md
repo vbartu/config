@@ -33,3 +33,5 @@ Options:
 This [post](https://joonas.fi/2021/02/uefi-pc-boot-process-and-uefi-with-qemu/) explains a bit of BIOS, UEFI and QEMU booting using UEFI
 
 And [this one](https://futurewei-cloud.github.io/ARM-Datacenter/qemu/how-to-launch-aarch64-vm/) describe how to set up an aarch64 qemu instance.
+
+[This one](https://interrupt.memfault.com/blog/emulating-raspberry-pi-in-qemu#getting-the-raspberry-pi-image) is even better: RPI 3b+.
