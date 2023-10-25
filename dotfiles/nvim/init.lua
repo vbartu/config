@@ -109,6 +109,8 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     "Mofiqul/trld.nvim",
     "nmac427/guess-indent.nvim",
+    "numToStr/Comment.nvim",
+    lazy = false,
     -- Completion
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-buffer",
@@ -120,6 +122,7 @@ require("lazy").setup({
 -- Plugins related config
 vim.cmd("colorscheme nightfox")
 require("guess-indent").setup({})
+require("Comment").setup()
 
 -- Allows vim-signify to update in realtime
 vim.opt.updatetime = 100 
