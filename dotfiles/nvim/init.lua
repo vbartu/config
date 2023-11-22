@@ -36,6 +36,7 @@ vim.keymap.set("n", "<C-y>", "3<C-y>")
 -- Shortcuts
 local shortcuts_file = vim.fn.stdpath("config") .. "/nvim_shortcuts"
 vim.keymap.set("n", "<Leader>a", ":!cat " .. shortcuts_file .. "<CR>")
+vim.keymap.set("n", "<Leader>r", ":e<CR>")
 local function reopen_new_tab()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
     vim.cmd("tabe %:p")

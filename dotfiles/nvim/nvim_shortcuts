@@ -12,6 +12,7 @@ v   SPACE + v       -> fzf grep visual selection
 n   SPACE + w       -> fzf grep word
 n   SPACE + d       -> fzf diagnostics in file
 n   SPACE + m       -> fzf man pages
+n   SPACE + r       -> Refresh file
 n   g + D           -> go to declaration
 n   g + d           -> go to definition
 n   g + e           -> go to fzf type
