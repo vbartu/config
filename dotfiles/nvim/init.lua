@@ -106,6 +106,7 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     "mhinz/vim-signify",
+    "rhysd/git-messenger.vim",
     "ibhagwan/fzf-lua",
     "neovim/nvim-lspconfig",
     "Mofiqul/trld.nvim",
@@ -127,6 +128,10 @@ require("Comment").setup()
 
 -- Allows vim-signify to update in realtime
 vim.opt.updatetime = 100 
+
+-- Git Messenger (git blame)
+vim.keymap.del("n", "<Leader>gm") -- default bindings
+vim.keymap.set("n", "<Leader>b", ":GitMessenger<CR>")
 
 -- FZF
 local fzf = require("fzf-lua")

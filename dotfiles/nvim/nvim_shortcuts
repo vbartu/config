@@ -3,6 +3,7 @@ n   Ctrl + e/y      -> Scroll up/down faster
 n   Ctrl + j/k/l/h  -> move to u/d/r/l window
 n   H/L             -> move to beginning/end of line
 n   SPACE + a       -> show this guide
+n   SPACE + b       -> show git commit (again to enter window)
 n   SPACE + t       -> reopen file in new tab
 n   SPACE + f       -> fzf files
 n   SPACE + s       -> fzf symbols in file
