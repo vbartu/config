@@ -5,15 +5,19 @@ n   H/L             -> move to beginning/end of line
 n   SPACE + a       -> show this guide
 n   SPACE + b       -> show git commit (again to enter window)
 n   SPACE + t       -> reopen file in new tab
+n   SPACE + v       -> reopen file in new split
+n   SPACE + c       -> open tin file in new split
 n   SPACE + f       -> fzf files
 n   SPACE + s       -> fzf symbols in file
 n   SPACE + S       -> fzf symbols in project
 n   SPACE + g       -> fzf live grep
-v   SPACE + v       -> fzf grep visual selection
+v   SPACE + w       -> fzf grep visual selection
 n   SPACE + w       -> fzf grep word
 n   SPACE + d       -> fzf diagnostics in file
 n   SPACE + m       -> fzf man pages
 n   SPACE + r       -> Refresh file
+n   SPACE + p       -> Registers
+n   SPACE + j       -> Jumps
 n   g + D           -> go to declaration
 n   g + d           -> go to definition
 n   g + e           -> go to fzf type

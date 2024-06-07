@@ -37,12 +37,37 @@ vim.keymap.set("n", "<C-y>", "3<C-y>")
 local shortcuts_file = vim.fn.stdpath("config") .. "/nvim_shortcuts"
 vim.keymap.set("n", "<Leader>a", ":!cat " .. shortcuts_file .. "<CR>")
 vim.keymap.set("n", "<Leader>r", ":e<CR>")
-local function reopen_new_tab()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    vim.cmd("tabe %:p")
-    vim.cmd("call cursor(" .. row .. "," .. col+1 ..")")
+local function reopen(cmd)
+    local pos = vim.api.nvim_win_get_cursor(0)
+    vim.cmd(cmd .. " %:p")
+    vim.api.nvim_win_set_cursor(0, pos)
 end
-vim.keymap.set("n", "<Leader>t", reopen_new_tab)
+vim.keymap.set("n", "<Leader>t", function() reopen("tabe") end)
+vim.keymap.set("n", "<Leader>v", function() reopen("vsplit") end)
+
+local function open_tin()
+    local current_file = vim.api.nvim_buf_get_name(0)
+    if current_file:sub(-3) == "tac" then
+        tin_file = current_file:sub(1, -4) .. "tin"
+        if vim.fn.filereadable(tin_file) ~= 0  then
+            vim.cmd("vsplit " .. tin_file)
+        else
+            print("tin file does not exist")
+        end
+    elseif current_file:sub(-3) == "tin" then
+        tac_file = current_file:sub(1, -4) .. "tac"
+        if vim.fn.filereadable(tac_file) ~= 0  then
+            vim.opt.splitright = false
+            vim.cmd("vsplit " .. tac_file)
+            vim.opt.splitright = true
+        else
+            print("tac file does not exist")
+        end
+    else
+        print("not a tac/tin file")
+    end
+end
+vim.keymap.set("n", "<Leader>c", open_tin)
 
 -- Status line
 vim.cmd([[
@@ -73,9 +98,10 @@ set statusline+=\ %3p%%\ (%l/%L)\ %4l:%-3c
 
 -- Functions
 -- F2: Set 80 char limit
+local char_limit = os.getenv("NVIM_CHAR_LIMIT") or "80"
 vim.keymap.set("n", "<F2>", function()
     if #(vim.opt.colorcolumn:get()) == 0 then
-        vim.opt.colorcolumn = {"80"}
+        vim.opt.colorcolumn = {char_limit}
     else
         vim.opt.colorcolumn = {}
     end
@@ -139,10 +165,12 @@ vim.keymap.set("n", "<Leader>f", fzf.files)
 vim.keymap.set("n", "<Leader>s", fzf.lsp_document_symbols)
 vim.keymap.set("n", "<Leader>S", fzf.lsp_workspace_symbols)
 vim.keymap.set("n", "<Leader>g", fzf.live_grep)
-vim.keymap.set("v", "<Leader>v", fzf.grep_visual)
+vim.keymap.set("v", "<Leader>w", fzf.grep_visual)
 vim.keymap.set("n", "<Leader>w", fzf.grep_cword)
 vim.keymap.set("n", "<Leader>d", fzf.diagnostics_document)
 vim.keymap.set("n", "<Leader>m", fzf.man_pages)
+vim.keymap.set("n", "<Leader>p", fzf.registers)
+vim.keymap.set("n", "<Leader>j", fzf.jumps)
 
 -- TreeSitter
 require'nvim-treesitter.configs'.setup {
