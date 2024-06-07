@@ -49,9 +49,8 @@ bind '"\021":"\ec"' # Bind it to Alt+C
 
 # History tweaks
 shopt -s histappend
-export HISTFILESIZE=1000000
-export HISTSIZE=1000000
-export HISTCONTROL=erasedups
+export HISTFILESIZE=10000000
+export HISTSIZE=10000000
 export HISTCONTROL='erasedups:ignoreboth'
 export HISTIGNORE=?
 export PROMPT_COMMAND='history -a'
