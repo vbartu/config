@@ -13,6 +13,17 @@ vim.keymap.set("n", ",p", "\"+p")
 vim.keymap.set("v", ",d", "\"+d")
 vim.keymap.set("v", ",y", "\"+y")
 vim.keymap.set("v", ",p", "\"+p")
+vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+}
 
 -- Tabs
 vim.opt.expandtab = true
