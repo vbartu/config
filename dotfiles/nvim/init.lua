@@ -148,6 +148,7 @@ require("lazy").setup({
     "neovim/nvim-lspconfig",
     "Mofiqul/trld.nvim",
     "nmac427/guess-indent.nvim",
+    "mfussenegger/nvim-dap",
     -- Completion
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-buffer",
@@ -196,3 +197,6 @@ vim.keymap.set("n", "<F4>", diagnostics.toggle_diagnostics)
 
 -- Autocompletion
 require("autocompletion")
+
+-- DAP
+require("dap_config")
