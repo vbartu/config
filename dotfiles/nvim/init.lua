@@ -56,29 +56,6 @@ end
 vim.keymap.set("n", "<Leader>t", function() reopen("tabe") end)
 vim.keymap.set("n", "<Leader>v", function() reopen("vsplit") end)
 
-local function open_tin()
-    local current_file = vim.api.nvim_buf_get_name(0)
-    if current_file:sub(-3) == "tac" then
-        tin_file = current_file:sub(1, -4) .. "tin"
-        if vim.fn.filereadable(tin_file) ~= 0  then
-            vim.cmd("vsplit " .. tin_file)
-        else
-            print("tin file does not exist")
-        end
-    elseif current_file:sub(-3) == "tin" then
-        tac_file = current_file:sub(1, -4) .. "tac"
-        if vim.fn.filereadable(tac_file) ~= 0  then
-            vim.opt.splitright = false
-            vim.cmd("vsplit " .. tac_file)
-            vim.opt.splitright = true
-        else
-            print("tac file does not exist")
-        end
-    else
-        print("not a tac/tin file")
-    end
-end
-vim.keymap.set("n", "<Leader>c", open_tin)
 
 -- Status line
 vim.cmd([[
@@ -200,3 +177,6 @@ require("autocompletion")
 
 -- DAP
 require("dap_config")
+
+-- Arista
+require("arista")

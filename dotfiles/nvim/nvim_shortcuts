@@ -6,7 +6,8 @@ n   SPACE + a       -> show this guide
 n   SPACE + b       -> show git commit (again to enter window)
 n   SPACE + t       -> reopen file in new tab
 n   SPACE + v       -> reopen file in new split
-n   SPACE + c       -> open tin file in new split
+n   SPACE + c       -> open tin/tac file in new split
+n   SPACE + o       -> print opengrok link
 n   SPACE + f       -> fzf files
 n   SPACE + s       -> fzf symbols in file
 n   SPACE + S       -> fzf symbols in project
