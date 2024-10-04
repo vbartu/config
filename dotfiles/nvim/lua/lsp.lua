@@ -2,26 +2,6 @@ local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local fzf = require("fzf-lua")
 
--- Rust
-lspconfig.rust_analyzer.setup({capabilities = capabilites})
-
--- C/C++
-lspconfig.clangd.setup({capabilites = capabilites})
-
--- Python
-lspconfig.pyright.setup({capabilites = capabilites})
-lspconfig.ruff_lsp.setup({capabilites = capabilites})
-require'lspconfig'.ruff_lsp.setup{
-  init_options = {
-    settings = {
-      -- TODO: Change for select only modules
-      args = {
-          "--line-length=79",
-      },
-    }
-  }
-}
-
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         -- Buffer local mappings.
@@ -34,6 +14,26 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', ',k', vim.lsp.buf.hover, opts)
     end
 })
+
+-- Rust
+lspconfig.rust_analyzer.setup({capabilities = capabilites})
+
+-- C/C++
+lspconfig.clangd.setup({capabilites = capabilites})
+
+-- Python
+lspconfig.pyright.setup({capabilites = capabilites})
+-- lspconfig.ruff_lsp.setup({capabilites = capabilites})
+-- require'lspconfig'.ruff_lsp.setup{
+--   init_options = {
+--     settings = {
+--       -- TODO: Change for select only modules
+--       args = {
+--           "--line-length=79",
+--       },
+--     }
+--   }
+-- }
 
 -- TACC (Arista)
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
