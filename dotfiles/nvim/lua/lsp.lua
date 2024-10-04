@@ -35,6 +35,28 @@ lspconfig.pyright.setup({capabilites = capabilites})
 --   }
 -- }
 
+-- Lua
+lspconfig.lua_ls.setup({
+  capabilites = capabilities,
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = {
+          'vim',
+          'require'
+        },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+    },
+  },
+})
+
+
 -- TACC (Arista)
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     pattern = {'*.tac'},
