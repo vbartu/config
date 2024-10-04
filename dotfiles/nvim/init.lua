@@ -170,8 +170,7 @@ require'nvim-treesitter.configs'.setup {
 require("lsp")
 
 -- Diagnostics
-local diagnostics = require("diagnostics")
-vim.keymap.set("n", "<F4>", diagnostics.toggle_diagnostics)
+require("diagnostics")
 
 -- Autocompletion
 require("autocompletion")
