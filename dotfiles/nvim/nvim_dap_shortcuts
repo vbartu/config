@@ -1,0 +1,13 @@
+n   SPACE + m       -> show dap guide
+n   m + b           -> toggle breakpoint line
+n   m + l           -> list breakpoints
+n   m + o           -> clear breakpoints
+n   m + c           -> run/continue
+n   m + p           -> pause
+n   m + t           -> close (terminate)
+n   m + n           -> step over
+n   m + s           -> step into
+n   m + f           -> step out (finish)
+n   m + z           -> run to cursor
+n   m + r           -> open/close repl
+n   m + k           -> toggle hover

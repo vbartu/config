@@ -46,7 +46,9 @@ vim.keymap.set("n", "<C-y>", "3<C-y>")
 
 -- Shortcuts
 local shortcuts_file = vim.fn.stdpath("config") .. "/nvim_shortcuts"
+local dap_shortcuts_file = vim.fn.stdpath("config") .. "/nvim_dap_shortcuts"
 vim.keymap.set("n", "<Leader>a", ":!cat " .. shortcuts_file .. "<CR>")
+vim.keymap.set("n", "<Leader>m", ":!cat " .. dap_shortcuts_file .. "<CR>")
 vim.keymap.set("n", "<Leader>r", ":e<CR>")
 local function reopen(cmd)
     local pos = vim.api.nvim_win_get_cursor(0)
@@ -154,7 +156,6 @@ vim.keymap.set("n", "<Leader>g", fzf.live_grep)
 vim.keymap.set("v", "<Leader>w", fzf.grep_visual)
 vim.keymap.set("n", "<Leader>w", fzf.grep_cword)
 vim.keymap.set("n", "<Leader>d", fzf.diagnostics_document)
-vim.keymap.set("n", "<Leader>m", fzf.man_pages)
 vim.keymap.set("n", "<Leader>p", fzf.registers)
 vim.keymap.set("n", "<Leader>j", fzf.jumps)
 
