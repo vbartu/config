@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+DOCS_DIR=$(realpath "$HOME/devel/config/docs")
+
+curr_dir=$(pwd)
+cd $DOCS_DIR
+file=$(fzf)
+cd $curr_dir
+nvim "$DOCS_DIR/$file"
