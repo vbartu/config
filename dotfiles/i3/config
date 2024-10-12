@@ -16,8 +16,8 @@ client.urgent             #2f343a  #900000  #ffffff  $coloratt  #900000
 client.placeholder        #22ba45  #000000  #ffffff  $coloratt  #0c0c0c
 
 # Functions keys
-bindsym XF86AudioRaiseVolume exec devel/config/scripts/volume -i 10
-bindsym XF86AudioLowerVolume exec devel/config/scripts/volume -d 10
+bindsym XF86AudioRaiseVolume exec devel/config/scripts/volume -i 5
+bindsym XF86AudioLowerVolume exec devel/config/scripts/volume -d 5
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessUp exec devel/config/scripts/backlight -i 10
@@ -153,8 +153,7 @@ for_window [instance="float_shell"] move scratchpad
 bindsym $mod+x [instance="float_shell"] scratchpad show, move position 960 0, resize set 1200 800
 
 # Wallpaper
-#exec feh --bg-scale .config/i3/wallpaper.jpg --no-startup-id
-exec feh --bg-max .config/i3/jinx.jpg --no-startup-id
+exec feh --bg-max data/documents/wallpaper/kite2.jpg --no-startup-id
 
 # i3lock log in
 #exec --no-startup-id i3lock -ei .config/i3/drg.png
