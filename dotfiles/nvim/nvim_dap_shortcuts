@@ -7,6 +7,8 @@ n   m + p           -> pause
 n   m + t           -> close (terminate)
 n   m + n           -> step over
 n   m + s           -> step into
+n   m + n + i       -> step over instruction
+n   m + s + i       -> step into instruction
 n   m + f           -> step out (finish)
 n   m + z           -> run to cursor
 n   m + r           -> open/close repl
