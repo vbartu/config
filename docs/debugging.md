@@ -12,6 +12,7 @@
 (GDB) next                 // Next instruction, over functions
 (GDB) step                 // One instruction, into functions
 (GDB) finish               // End of current function/section?
+(GDB) until                // Run until next line is reached (loops)
 ```
 ### Assembly
 ```
@@ -21,6 +22,25 @@
 (gdb) nexti
 (gdb) stepi
 ```
+
+### Breakpoints
+b function | file.c:line | line
+clear function | file.c:line | line
+info b
+del X
+tbreak -> temp breakpoint, clears itself after hit
+    tb +lines, c
+
+### Printing
+backtrace: bt
+print frame info: info frame
+print register: info
+print register: p $reg
+x command: x /[length][format] address|variable|$reg ->
+    X = bytes
+    format: hex x | int d | uint u | addr a | char c | str s | float f | ins i
+    format mod: b|h|w|g (8, 16, 32, 64)
+
 
 ### References
 * [Quick assembly guide](https://reverseengineering.stackexchange.com/questions/1935/how-to-handle-stripped-binaries-with-gdb-no-source-no-symbols-and-gdb-only-sho)
