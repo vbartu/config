@@ -1,4 +1,4 @@
-i   S-Tab           -> remote tab
+i   S-Tab           -> remove tab
 n   Ctrl + e/y      -> Scroll up/down faster
 n   Ctrl + j/k/l/h  -> move to u/d/r/l window
 n   H/L             -> move to beginning/end of line
@@ -7,8 +7,9 @@ n   SPACE + m       -> show dap guide
 n   SPACE + b       -> show git commit (again to enter window)
 n   SPACE + t       -> reopen file in new tab
 n   SPACE + v       -> reopen file in new split
-n   SPACE + c       -> open tin/tac file in new split
-n   SPACE + o       -> print opengrok link
+n   SPACE + c       -> open tin/tac file in new split (Arista)
+n   SPACE + x       -> fzf python lib (Arista)
+n   SPACE + o       -> print opengrok link (Arista)
 n   SPACE + f       -> fzf files
 n   SPACE + s       -> fzf symbols in file
 n   SPACE + S       -> fzf symbols in project
@@ -16,7 +17,7 @@ n   SPACE + g       -> fzf live grep
 v   SPACE + w       -> fzf grep visual selection
 n   SPACE + w       -> fzf grep word
 n   SPACE + d       -> fzf diagnostics in file
-n   SPACE + r       -> Refresh file
+n   SPACE + r       -> fzf resume
 n   SPACE + p       -> Registers
 n   SPACE + j       -> Jumps
 n   g + D           -> go to declaration
