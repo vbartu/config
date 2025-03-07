@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(ev)
         -- Buffer local mappings.
         local opts = { buffer = ev.buf }
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gD', vim.lsp.buf.implementation, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'ge', fzf.lsp_typedefs, opts)
         vim.keymap.set('n', 'gr', fzf.lsp_references, opts)
