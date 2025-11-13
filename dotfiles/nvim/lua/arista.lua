@@ -62,13 +62,5 @@ local function print_opengrok_link()
     print(link_base .. current_file .. "#" .. line)
 end
 
-local function fzf_python_library()
-    local func = require("functions")
-    local full_name = vim.api.nvim_buf_get_name(0)
-    local lib_name = full_name:match(".*/site%-packages/(.*)$")
-    func.fzf_with_input(lib_name:gsub("/", " "))
-end
-
 vim.keymap.set("n", "<Leader>c", open_tin)
-vim.keymap.set("n", "<Leader>x", fzf_python_library)
 vim.keymap.set("n", "<Leader>o", print_opengrok_link)

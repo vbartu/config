@@ -8,7 +8,6 @@ n   SPACE + b       -> show git commit (again to enter window)
 n   SPACE + t       -> reopen file in new tab
 n   SPACE + v       -> reopen file in new split
 n   SPACE + c       -> open tin/tac file in new split (Arista)
-n   SPACE + x       -> fzf python lib (Arista)
 n   SPACE + o       -> print opengrok link (Arista)
 n   SPACE + f       -> fzf files
 n   SPACE + s       -> fzf symbols in file
