@@ -1,24 +1,27 @@
 i   S-Tab           -> remove tab
 n   Ctrl + e/y      -> Scroll up/down faster
 n   Ctrl + j/k/l/h  -> move to u/d/r/l window
+n   Ctrl + Space    -> toggle floating terminal
+n   Ctrl + m        -> toggle terminal horizontal split
+n   Ctrl + n        -> toggle terminal new tab
 n   H/L             -> move to beginning/end of line
-n   SPACE + a       -> show this guide
-n   SPACE + m       -> show dap guide
-n   SPACE + b       -> show git commit (again to enter window)
-n   SPACE + t       -> reopen file in new tab
-n   SPACE + v       -> reopen file in new split
-n   SPACE + c       -> open tin/tac file in new split (Arista)
-n   SPACE + o       -> print opengrok link (Arista)
-n   SPACE + f       -> fzf files
-n   SPACE + s       -> fzf symbols in file
-n   SPACE + S       -> fzf symbols in project
-n   SPACE + g       -> fzf live grep
-v   SPACE + w       -> fzf grep visual selection
-n   SPACE + w       -> fzf grep word
-n   SPACE + d       -> fzf diagnostics in file
-n   SPACE + r       -> fzf resume
-n   SPACE + x       -> Copy file name to clipboard
-n   SPACE + z       -> Run file in target tmux pane
+n   Space + a       -> show this guide
+n   Space + m       -> show dap guide
+n   Space + b       -> show git commit (again to enter window)
+n   Space + t       -> reopen file in new tab
+n   Space + v       -> reopen file in new split
+n   Space + c       -> open tin/tac file in new split (Arista)
+n   Space + o       -> print opengrok link (Arista)
+n   Space + f       -> fzf files
+n   Space + s       -> fzf symbols in file
+n   Space + S       -> fzf symbols in project
+n   Space + g       -> fzf live grep
+v   Space + w       -> fzf grep visual selection
+n   Space + w       -> fzf grep word
+n   Space + d       -> fzf diagnostics in file
+n   Space + r       -> fzf resume
+n   Space + x       -> Copy file name to clipboard
+n   Space + z       -> Run file in target tmux pane
 n   g + D           -> go to declaration
 n   g + d           -> go to definition
 n   g + e           -> go to fzf type
@@ -31,9 +34,6 @@ n   , + r           -> rename symbol
 n   , + k           -> float doc (Ctrl + u/d), x2 goes into
 n   , + e           -> float error (Ctrl + u/d), x2 goes into
 v/n , + d/y/p       -> cut/copy/paste to clipboard
-n   CTRL + SPACE    -> toggle floating terminal
-n   CTRL + m        -> toggle terminal horizontal split
-n   CTRL + n        -> toggle terminal new tab
 n   F2              -> Set 80 column bar
 n   F3              -> Show blank chars
 n   F4              -> Toggle diagnostics
