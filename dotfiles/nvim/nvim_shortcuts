@@ -17,14 +17,16 @@ v   SPACE + w       -> fzf grep visual selection
 n   SPACE + w       -> fzf grep word
 n   SPACE + d       -> fzf diagnostics in file
 n   SPACE + r       -> fzf resume
-n   SPACE + p       -> Registers
-n   SPACE + j       -> Jumps
 n   SPACE + x       -> Copy file name to clipboard
 n   SPACE + z       -> Run file in target tmux pane
 n   g + D           -> go to declaration
 n   g + d           -> go to definition
 n   g + e           -> go to fzf type
 n   g + r           -> fzf references
+n   , + p           -> fzf registers
+n   , + j           -> fzf jumps
+n   , + /           -> fzf search history
+n   , + :           -> fzf command history
 n   , + r           -> rename symbol
 n   , + k           -> float doc (Ctrl + u/d), x2 goes into
 n   , + e           -> float error (Ctrl + u/d), x2 goes into
