@@ -122,6 +122,7 @@ require("lazy").setup({
     build = ":TSUpdate",
     "mhinz/vim-signify",
     "rhysd/git-messenger.vim",
+    {"akinsho/toggleterm.nvim", version = "*", config = true},
     "ibhagwan/fzf-lua",
     "neovim/nvim-lspconfig",
     "Mofiqul/trld.nvim",
@@ -138,6 +139,13 @@ require("lazy").setup({
 -- Plugins related config
 vim.cmd("colorscheme nightfox")
 require("guess-indent").setup({})
+
+-- Terminal
+require("toggleterm").setup()
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")
+vim.keymap.set("n", "<C-Space>", ":ToggleTerm direction=float<CR>")
+vim.keymap.set("n", "<C-m>", ":ToggleTerm direction=horizontal size=20<CR>")
+vim.keymap.set("n", "<C-n>", ":ToggleTerm direction=tab<CR>")
 
 -- Allows vim-signify to update in realtime
 vim.opt.updatetime = 100

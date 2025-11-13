@@ -28,6 +28,9 @@ n   , + r           -> rename symbol
 n   , + k           -> float doc (Ctrl + u/d), x2 goes into
 n   , + e           -> float error (Ctrl + u/d), x2 goes into
 v/n , + d/y/p       -> cut/copy/paste to clipboard
+n   CTRL + SPACE    -> toggle floating terminal
+n   CTRL + m        -> toggle terminal horizontal split
+n   CTRL + n        -> toggle terminal new tab
 n   F2              -> Set 80 column bar
 n   F3              -> Show blank chars
 n   F4              -> Toggle diagnostics
