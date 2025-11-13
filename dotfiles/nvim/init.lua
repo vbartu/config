@@ -175,7 +175,20 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- LSP
-require("lsp")
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(ev)
+        -- Buffer local mappings.
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'ge', fzf.lsp_typedefs, opts)
+        vim.keymap.set('n', 'gr', fzf.lsp_references, opts)
+        vim.keymap.set('n', ',r', vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', ',k', vim.lsp.buf.hover, opts)
+    end
+})
+
+vim.lsp.enable({"clangd", "pyright", "rust_analyzer", "lua_ls", "tacc"})
 
 -- Diagnostics
 require("diagnostics")
