@@ -24,17 +24,31 @@ local function open_tin() -- Also for tac files
             print(cpp_file)
             vim.cmd("vsplit " .. cpp_file)
         else
-            print("tin file does not exist")
+            print("cpp file does not exist")
+        end
+    elseif current_file:sub(-3) == "hpp" then
+        local cpp_file = current_file:sub(1, -4) .. "cpp"
+        if vim.fn.filereadable(cpp_file) ~= 0  then
+            print(cpp_file)
+            vim.cmd("vsplit " .. cpp_file)
+        else
+            print("cpp file does not exist")
         end
     elseif current_file:sub(-3) == "cpp" then
         local h_file = current_file:sub(1, -4) .. "h"
+        local hpp_file = current_file:sub(1, -4) .. "hpp"
         if vim.fn.filereadable(h_file) ~= 0  then
             vim.opt.splitright = false
             vim.cmd("vsplit " .. h_file)
             vim.opt.splitright = true
             print(h_file)
+        elseif vim.fn.filereadable(hpp_file) ~= 0  then
+            vim.opt.splitright = false
+            vim.cmd("vsplit " .. hpp_file)
+            vim.opt.splitright = true
+            print(h_file)
         else
-            print("tac file does not exist")
+            print("h/hpp file does not exist")
         end
     else
         print("not a tac/tin or h/cpp pair")
