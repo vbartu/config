@@ -86,6 +86,9 @@ set statusline+=\ %3p%%\ (%l/%L)\ %4l:%-3c
 
 
 -- Functions
+-- Load extras
+require("extras")
+
 -- F2: Set 80 char limit
 local char_limit = os.getenv("NVIM_CHAR_LIMIT") or "80"
 vim.keymap.set("n", "<F2>", function()

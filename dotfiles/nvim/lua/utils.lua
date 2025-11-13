@@ -1,6 +1,6 @@
 local M = {}
 
-function M.file_name()
+function M.basename()
     local full_name = vim.api.nvim_buf_get_name(0)
     return full_name:match("[^/]*$")
 end

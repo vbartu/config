@@ -19,6 +19,8 @@ n   SPACE + d       -> fzf diagnostics in file
 n   SPACE + r       -> fzf resume
 n   SPACE + p       -> Registers
 n   SPACE + j       -> Jumps
+n   SPACE + x       -> Copy file name to clipboard
+n   SPACE + z       -> Run file in target tmux pane
 n   g + D           -> go to declaration
 n   g + d           -> go to definition
 n   g + e           -> go to fzf type
