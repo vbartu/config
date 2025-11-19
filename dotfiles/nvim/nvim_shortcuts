@@ -31,6 +31,7 @@ n   , + j           -> fzf jumps
 n   , + /           -> fzf search history
 n   , + :           -> fzf command history
 n   , + r           -> rename symbol
+n   , + s           -> substitute word under cursor
 n   , + k           -> float doc (Ctrl + u/d), x2 goes into
 n   , + e           -> float error (Ctrl + u/d), x2 goes into
 v/n , + d/y/p       -> cut/copy/paste to clipboard

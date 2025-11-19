@@ -58,6 +58,8 @@ end
 vim.keymap.set("n", "<Leader>t", function() reopen("tabe") end)
 vim.keymap.set("n", "<Leader>v", function() reopen("vsplit") end)
 
+-- Misc mappings
+vim.keymap.set("n", ",s", ":%s/\\<<C-r><C-w>\\>/")
 
 -- Status line
 vim.cmd([[
