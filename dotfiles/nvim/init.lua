@@ -171,7 +171,7 @@ vim.keymap.set("n", "<Leader>w", fzf.grep_cword)
 vim.keymap.set("n", "<Leader>d", fzf.diagnostics_document)
 vim.keymap.set("n", "<Leader>r", fzf.resume)
 
-vim.keymap.set("n", ",p", fzf.registers)
+vim.keymap.set("n", ",v", fzf.registers)
 vim.keymap.set("n", ",j", fzf.jumps)
 vim.keymap.set("n", ",:", fzf.command_history)
 vim.keymap.set("n", ",/", fzf.search_history)

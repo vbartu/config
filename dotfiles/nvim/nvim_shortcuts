@@ -26,7 +26,7 @@ n   g + D           -> go to declaration
 n   g + d           -> go to definition
 n   g + e           -> go to fzf type
 n   g + r           -> fzf references
-n   , + p           -> fzf registers
+n   , + v           -> fzf registers
 n   , + j           -> fzf jumps
 n   , + /           -> fzf search history
 n   , + :           -> fzf command history
