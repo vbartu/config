@@ -64,3 +64,12 @@ end
 
 vim.keymap.set("n", "<Leader>c", open_tin)
 vim.keymap.set("n", "<Leader>o", print_opengrok_link)
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "tac",
+    callback = function(event)
+        local local_scope = {["scope"]="local"}
+        vim.api.nvim_set_option_value("comments", "://", local_scope)
+        vim.api.nvim_set_option_value("commentstring", "// %s", local_scope)
+    end
+})
