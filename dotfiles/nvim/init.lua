@@ -43,6 +43,7 @@ vim.keymap.set("n", "H", "^")
 vim.keymap.set("n", "L", "$")
 vim.keymap.set("n", "<C-e>", "3<C-e>")
 vim.keymap.set("n", "<C-y>", "3<C-y>")
+vim.keymap.set("n", "<Enter>", "<Nop>")
 
 -- Shortcuts
 local shortcuts_file = vim.fn.stdpath("config") .. "/nvim_shortcuts"
