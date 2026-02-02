@@ -11,5 +11,6 @@ STATUS=$(cat $BATTERY_DIR/status)
 LEVEL=$((CURRENT*100/TOTAL))
 
 if [[ LEVEL -le 20 && $STATUS == Discharging ]]; then
+	export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
 	dunstify "Battery level $LEVEL%" -r $UNIQUE_ID -a $APP
 fi
