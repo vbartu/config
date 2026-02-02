@@ -24,6 +24,8 @@ add_to_path "~/.cargo/bin"
 [[ -r /usr/share/fzf/completion.bash ]] && . /usr/share/fzf/completion.bash
 [[ -r /usr/share/doc/fzf/examples/key-bindings.bash ]] && . /usr/share/doc/fzf/examples/key-bindings.bash
 [[ -r /usr/share/doc/fzf/examples/completion.bash ]] && . /usr/share/doc/fzf/examples/completion.bash
+[ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
+[ -s ~/.luaver/completions/luaver.bash ] && . ~/.luaver/completions/luaver.bash
 
 # Alias
 alias ls='ls --color=auto --group-directories-first'
