@@ -29,4 +29,23 @@ function M.launch_python_code(code)
     M.tmux_tab_cmd("python -i " .. tmp_file)
 end
 
+function M.command_actions(commands)
+    local items = {}
+    for _, cmd in ipairs(commands) do
+        for _, sub in ipairs(vim.fn.getcompletion(cmd .. " ", "cmdline")) do
+            table.insert(items, cmd .. " " .. sub)
+        end
+    end
+    table.sort(items)
+    require("fzf-lua").fzf_exec(items, {
+        prompt = "Actions > ",
+        actions = {
+            ["default"] = function(selected)
+                local ok, err = pcall(vim.cmd, selected[1])
+                if not ok then vim.notify(err, vim.log.levels.WARN) end
+            end,
+        },
+    })
+end
+
 return M

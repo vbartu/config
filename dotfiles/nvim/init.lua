@@ -152,6 +152,11 @@ gitsigns.setup({
 vim.keymap.set("n", "<Leader>b", gitsigns.blame_line)
 vim.keymap.set("n", "<F5>", gitsigns.toggle_word_diff)
 
+-- Plugin actions
+local utils = require("utils")
+local plugins = {"Gitsigns", "FzfLua"}
+vim.keymap.set("n", "<Leader>e", function() utils.command_actions(plugins) end)
+
 -- Terminal
 local toggleterm = require("toggleterm")
 toggleterm.setup()

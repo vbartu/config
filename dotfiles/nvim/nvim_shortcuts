@@ -17,6 +17,7 @@ v   Space + w       -> fzf grep visual selection
 n   Space + w       -> fzf grep word
 n   Space + d       -> fzf diagnostics in file
 n   Space + r       -> fzf resume
+n   Space + e       -> fzf plugin action picker
 n   Space + x       -> Copy file name to clipboard
 n   Space + z       -> Run file in target tmux pane
 n   g + D           -> go to declaration
