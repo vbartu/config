@@ -38,3 +38,4 @@ v/n , + d/y/p       -> cut/copy/paste to clipboard
 n   F2              -> Set 80 column bar
 n   F3              -> Show blank chars
 n   F4              -> Toggle diagnostics
+n   F5              -> Toggle word git diff

@@ -126,8 +126,7 @@ require("lazy").setup({
     "EdenEast/nightfox.nvim",
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    "mhinz/vim-signify",
-    "rhysd/git-messenger.vim",
+    "lewis6991/gitsigns.nvim",
     {"akinsho/toggleterm.nvim", version = "*", config = true},
     "ibhagwan/fzf-lua",
     "neovim/nvim-lspconfig",
@@ -153,12 +152,13 @@ vim.keymap.set("n", "<C-Space>", ":ToggleTerm direction=float<CR>")
 vim.keymap.set("n", "<C-m>", ":ToggleTerm direction=horizontal size=20<CR>")
 vim.keymap.set("n", "<C-n>", ":ToggleTerm direction=tab<CR>")
 
--- Allows vim-signify to update in realtime
-vim.opt.updatetime = 100
-
--- Git Messenger (git blame)
-vim.keymap.del("n", "<Leader>gm") -- default bindings
-vim.keymap.set("n", "<Leader>b", ":GitMessenger<CR>")
+-- gitsigns
+local gitsigns = require("gitsigns")
+gitsigns.setup({
+    numhl = true,
+})
+vim.keymap.set("n", "<Leader>b", gitsigns.blame_line)
+vim.keymap.set("n", "<F5>", gitsigns.toggle_word_diff)
 
 -- FZF
 local fzf = require("fzf-lua")
