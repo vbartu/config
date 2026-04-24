@@ -1,9 +1,6 @@
 i   S-Tab           -> remove tab
 n   Ctrl + e/y      -> Scroll up/down faster
 n   Ctrl + j/k/l/h  -> move to u/d/r/l window
-n   Ctrl + Space    -> toggle floating terminal
-n   Ctrl + m        -> toggle terminal horizontal split
-n   Ctrl + n        -> toggle terminal new tab
 n   H/L             -> move to beginning/end of line
 n   Space + a       -> show this guide
 n   Space + m       -> show dap guide
@@ -30,6 +27,8 @@ n   , + v           -> fzf registers
 n   , + j           -> fzf jumps
 n   , + /           -> fzf search history
 n   , + :           -> fzf command history
+n   , + f           -> toggle floating terminal
+n   , + m           -> toggle terminal horizontal split
 n   , + r           -> rename symbol
 n   , + s           -> substitute word under cursor
 n   , + k           -> float doc (Ctrl + u/d), x2 goes into

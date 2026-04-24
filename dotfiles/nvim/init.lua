@@ -43,7 +43,6 @@ vim.keymap.set("n", "H", "^")
 vim.keymap.set("n", "L", "$")
 vim.keymap.set("n", "<C-e>", "3<C-e>")
 vim.keymap.set("n", "<C-y>", "3<C-y>")
-vim.keymap.set("n", "<Enter>", "<Nop>")
 
 -- Shortcuts
 local shortcuts_file = vim.fn.stdpath("config") .. "/nvim_shortcuts"
@@ -145,13 +144,6 @@ require("lazy").setup({
 vim.cmd("colorscheme nightfox")
 require("guess-indent").setup({})
 
--- Terminal
-require("toggleterm").setup()
-vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")
-vim.keymap.set("n", "<C-Space>", ":ToggleTerm direction=float<CR>")
-vim.keymap.set("n", "<C-m>", ":ToggleTerm direction=horizontal size=20<CR>")
-vim.keymap.set("n", "<C-n>", ":ToggleTerm direction=tab<CR>")
-
 -- gitsigns
 local gitsigns = require("gitsigns")
 gitsigns.setup({
@@ -159,6 +151,14 @@ gitsigns.setup({
 })
 vim.keymap.set("n", "<Leader>b", gitsigns.blame_line)
 vim.keymap.set("n", "<F5>", gitsigns.toggle_word_diff)
+
+-- Terminal
+local toggleterm = require("toggleterm")
+toggleterm.setup()
+-- vim.keymap.set("n", "<C-m>", ":ToggleTerm direction=horizontal size=20<CR>")
+vim.keymap.set("n", ",t", function() toggleterm.toggle(1, 20, nil, "horizontal") end)
+vim.keymap.set("n", ",f", function() toggleterm.toggle(1, nil, nil, "float") end)
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>")
 
 -- FZF
 local fzf = require("fzf-lua")
