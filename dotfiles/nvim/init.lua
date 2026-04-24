@@ -124,8 +124,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     "EdenEast/nightfox.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    {"nvim-treesitter/nvim-treesitter", lazy=false,  build = ":TSUpdate" },
+    "nvim-treesitter/nvim-treesitter-context",
     "lewis6991/gitsigns.nvim",
     {"akinsho/toggleterm.nvim", version = "*", config = true},
     "ibhagwan/fzf-lua",
@@ -176,13 +176,28 @@ vim.keymap.set("n", ",j", fzf.jumps)
 vim.keymap.set("n", ",:", fzf.command_history)
 vim.keymap.set("n", ",/", fzf.search_history)
 
--- TreeSitter
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = {"c", "lua", "vim", "vimdoc", "query", "python", "rust"},
-  highlight = {enable = true},
-  indent = {enable=true},
-}
+-- Treesitter
+require("nvim-treesitter.configs").setup({
+    auto_install = true,
+    ignore_install = {},
+    sync_install = false,
+    ensure_installed = {},
+    highlight = {enable = true},
+    indent = {enable = true},
+    modules = {},
+})
+local ts_context = require("treesitter-context")
+ts_context.disable()
+vim.keymap.set("n", "<F6>", ts_context.toggle)
+
+-- Native incremental selection
+vim.keymap.set("x", "<CR>", function()
+  require("vim.treesitter._select").select_parent(vim.v.count1)
+end, { desc = "Expand Tree-sitter Selection" })
+
+vim.keymap.set("x", "<BS>", function()
+  require("vim.treesitter._select").select_child(vim.v.count1)
+end, { desc = "Shrink Tree-sitter Selection" })
 
 -- LSP
 vim.api.nvim_create_autocmd('LspAttach', {
