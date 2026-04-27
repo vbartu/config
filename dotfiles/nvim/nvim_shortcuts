@@ -42,3 +42,4 @@ n   F3              -> Show blank chars
 n   F4              -> Toggle diagnostics
 n   F5              -> Toggle word git diff
 n   F6              -> Toggle treesitter context
+n   F7              -> Toggle folding column

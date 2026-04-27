@@ -192,10 +192,10 @@ require("nvim-treesitter.configs").setup({
     modules = {},
 })
 local ts_context = require("treesitter-context")
-ts_context.disable()
+ts_context.enable()
 vim.keymap.set("n", "<F6>", ts_context.toggle)
 
--- Native incremental selection
+-- Treesitter native incremental selection
 vim.keymap.set("x", "<CR>", function()
   require("vim.treesitter._select").select_parent(vim.v.count1)
 end, { desc = "Expand Tree-sitter Selection" })
@@ -203,6 +203,21 @@ end, { desc = "Expand Tree-sitter Selection" })
 vim.keymap.set("x", "<BS>", function()
   require("vim.treesitter._select").select_child(vim.v.count1)
 end, { desc = "Shrink Tree-sitter Selection" })
+
+-- Treesitter folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldnestmax = 4
+vim.opt.foldcolumn = "0"
+vim.opt.foldtext = ""
+local fillchars = { fold=".", foldopen = "", foldsep = "┃", foldclose = "" }
+vim.opt.fillchars:append(fillchars)
+vim.api.nvim_set_hl(0, "FoldColumn", { link = "Comment" })
+vim.keymap.set("n", "<F7>", function()
+    vim.opt.foldcolumn = vim.o.foldcolumn == "0" and "1" or "0"
+end)
 
 -- LSP
 vim.api.nvim_create_autocmd('LspAttach', {
