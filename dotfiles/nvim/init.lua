@@ -86,6 +86,30 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\ %3p%%\ (%l/%L)\ %4l:%-3c
 ]])
 
+-- Tree-sitter
+-- Native incremental selection
+vim.keymap.set("x", "<CR>", function()
+  require("vim.treesitter._select").select_parent(vim.v.count1)
+end, { desc = "Expand Tree-sitter Selection" })
+
+vim.keymap.set("x", "<BS>", function()
+  require("vim.treesitter._select").select_child(vim.v.count1)
+end, { desc = "Shrink Tree-sitter Selection" })
+
+-- Folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldnestmax = 4
+vim.opt.foldcolumn = "0"
+vim.opt.foldtext = ""
+local fillchars = { fold=".", foldopen = "", foldsep = "┃", foldclose = "" }
+vim.opt.fillchars:append(fillchars)
+vim.api.nvim_set_hl(0, "FoldColumn", { link = "Comment" })
+vim.keymap.set("n", "<F6>", function()
+    vim.opt.foldcolumn = vim.o.foldcolumn == "0" and "1" or "0"
+end)
 
 -- Functions
 -- Load extras
@@ -123,8 +147,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     "EdenEast/nightfox.nvim",
-    {"nvim-treesitter/nvim-treesitter", lazy=false,  build = ":TSUpdate" },
-    "nvim-treesitter/nvim-treesitter-context",
+    "romus204/tree-sitter-manager.nvim",
     "lewis6991/gitsigns.nvim",
     {"akinsho/toggleterm.nvim", version = "*", config = true},
     "ibhagwan/fzf-lua",
@@ -143,6 +166,9 @@ require("lazy").setup({
 -- Plugins related config
 vim.cmd("colorscheme nightfox")
 require("guess-indent").setup({})
+
+-- Tree-sitter manager
+require("tree-sitter-manager").setup({auto_install = true})
 
 -- gitsigns
 local gitsigns = require("gitsigns")
@@ -180,44 +206,6 @@ vim.keymap.set("n", ",v", fzf.registers)
 vim.keymap.set("n", ",j", fzf.jumps)
 vim.keymap.set("n", ",:", fzf.command_history)
 vim.keymap.set("n", ",/", fzf.search_history)
-
--- Treesitter
-require("nvim-treesitter.configs").setup({
-    auto_install = true,
-    ignore_install = {},
-    sync_install = false,
-    ensure_installed = {},
-    highlight = {enable = true},
-    indent = {enable = true},
-    modules = {},
-})
-local ts_context = require("treesitter-context")
-ts_context.enable()
-vim.keymap.set("n", "<F6>", ts_context.toggle)
-
--- Treesitter native incremental selection
-vim.keymap.set("x", "<CR>", function()
-  require("vim.treesitter._select").select_parent(vim.v.count1)
-end, { desc = "Expand Tree-sitter Selection" })
-
-vim.keymap.set("x", "<BS>", function()
-  require("vim.treesitter._select").select_child(vim.v.count1)
-end, { desc = "Shrink Tree-sitter Selection" })
-
--- Treesitter folding
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
-vim.opt.foldnestmax = 4
-vim.opt.foldcolumn = "0"
-vim.opt.foldtext = ""
-local fillchars = { fold=".", foldopen = "", foldsep = "┃", foldclose = "" }
-vim.opt.fillchars:append(fillchars)
-vim.api.nvim_set_hl(0, "FoldColumn", { link = "Comment" })
-vim.keymap.set("n", "<F7>", function()
-    vim.opt.foldcolumn = vim.o.foldcolumn == "0" and "1" or "0"
-end)
 
 -- LSP
 vim.api.nvim_create_autocmd('LspAttach', {

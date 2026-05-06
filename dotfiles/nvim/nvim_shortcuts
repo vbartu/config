@@ -41,5 +41,4 @@ n   F2              -> Set 80 column bar
 n   F3              -> Show blank chars
 n   F4              -> Toggle diagnostics
 n   F5              -> Toggle word git diff
-n   F6              -> Toggle treesitter context
-n   F7              -> Toggle folding column
+n   F6              -> Toggle folding column
