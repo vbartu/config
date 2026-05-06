@@ -65,11 +65,18 @@ end
 vim.keymap.set("n", "<Leader>c", open_tin)
 vim.keymap.set("n", "<Leader>o", print_opengrok_link)
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "tac",
-    callback = function(event)
-        local local_scope = {["scope"]="local"}
-        vim.api.nvim_set_option_value("comments", "://", local_scope)
-        vim.api.nvim_set_option_value("commentstring", "// %s", local_scope)
-    end
+vim.filetype.add({
+  extension = {
+    tin = "cpp",
+  },
 })
+
+if vim.fn.isdirectory("/src/ArEditorPlugins/nvim/plugins/tac.nvim") == 1 then
+    vim.opt.rtp:prepend("/src/ArEditorPlugins/nvim/plugins/tac.nvim")
+    require("tac").setup {}
+end
+
+if vim.fn.isdirectory("/src/ArEditorPlugins/nvim/plugins/s4.nvim") == 1 then
+    vim.opt.rtp:prepend("/src/ArEditorPlugins/nvim/plugins/s4.nvim")
+    require("s4").setup {}
+end
