@@ -155,12 +155,11 @@ require("lazy").setup({
     "Mofiqul/trld.nvim",
     "nmac427/guess-indent.nvim",
     "mfussenegger/nvim-dap",
-    -- Completion
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
-    "saadparwaiz1/cmp_luasnip",
-    "L3MON4D3/LuaSnip",
+    "saghen/blink.lib",
+    {
+        "saghen/blink.cmp",
+        build = function() require('blink.cmp').build():pwait() end,
+    },
 })
 
 -- Plugins related config
@@ -223,11 +222,32 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.lsp.enable({"clangd", "pyright", "rust_analyzer", "lua_ls", "tacc"})
 
+-- Autocompletion
+local blink = require("blink.cmp")
+blink.setup({
+    keymap = {
+        preset = "super-tab",
+        ["<CR>"] = { "accept", "fallback" },
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-Space>"] = { "show", "show_documentation", "hide" },
+    },
+    completion = {
+        list = {
+            selection = { preselect = false, auto_insert = false, }
+        }
+    },
+    appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono",
+    },
+    sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+    },
+})
+
 -- Diagnostics
 require("diagnostics")
-
--- Autocompletion
-require("autocompletion")
 
 -- DAP
 require("dap_config")
