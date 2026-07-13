@@ -61,30 +61,34 @@ vim.keymap.set("n", "<Leader>v", function() reopen("vsplit") end)
 vim.keymap.set("n", ",s", ":%s/\\<<C-r><C-w>\\>/")
 
 -- Status line
-vim.cmd([[
-" Status line
-autocmd WinLeave * highlight StatusModeColor ctermfg=15 ctermbg=239 cterm=Bold
-function! StatusMode()
-    let mode = mode()
-    if mode == "n"
-        return " NORMAL "
-    elseif mode == "i"
-        return " INSERT "
-    elseif mode == "v"
-        return " VISUAL "
-    else
-        return ""
-    endif
-endfunction
-set laststatus=2
-set statusline=
-set statusline+=\ %{StatusMode()}
-set statusline+=\ %f%m%=
-set statusline+=%{v:register}
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ %3p%%\ (%l/%L)\ %4l:%-3c
-]])
+vim.opt.laststatus = 3
+local modes = {
+    ['n']  = ' NORMAL ',
+    ['i']  = ' INSERT ',
+    ['v']  = ' VISUAL ',
+    ['V']  = ' V-LINE ',
+    ['\22'] = ' V-BLOCK ',
+    ['c']  = ' COMMAND ',
+}
+
+local function status_mode()
+    local current_mode = vim.api.nvim_get_mode().mode
+    return modes[current_mode] or (" " .. current_mode:upper() .. " ")
+end
+
+function MyStatusLine()
+    local parts = {
+        status_mode(),                  -- Mode block
+        " %f%m",                        -- File name and modified flag
+        "%=",                           -- Right-align spacer splits the bar here
+        "%{v:register}",                -- Active macro/copy register
+        " %y ",                         -- Filetype
+        "%{&fileencoding?&fileencoding:&encoding} ", -- Encoding
+        "%3p%% (%l/%L) %4l:%-3c"        -- Percentage, lines, and columns
+    }
+    return table.concat(parts)
+end
+vim.opt.statusline = "%!v:lua.MyStatusLine()"
 
 -- Tree-sitter
 -- Native incremental selection
