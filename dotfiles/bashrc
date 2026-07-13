@@ -46,6 +46,9 @@ bind '"\023":"\022"' # Bind it to ^R
 stty start '' # Free ^Q
 bind '"\021":"\ec"' # Bind it to Alt+C
 
+# ls colors
+export LS_COLORS="tw=1;34:ow=1;34"
+
 # Add company dependant configuration
 [[ -r ~/.bash_company ]] && . ~/.bash_company
 
